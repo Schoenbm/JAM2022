@@ -301,7 +301,7 @@ MonoBehaviour:
   platformPrefab: {fileID: 8656096775896514992, guid: f7ad06260883ac94e903b5b0b15df1c0, type: 3}
   icePrefab: {fileID: 6612716061669064303, guid: 2b4783e46dd029a47a92d03bfa0642ed, type: 3}
   scrapPrefab: {fileID: 5695617301470431585, guid: 5b4b8ed3eb05e3942b442c1b05f199fc, type: 3}
-  parent: {fileID: 703291120}
+  earthCore: {fileID: 703291120}
   timeBetweenItemsSpawn: 3
   amount: 3
 --- !u!1001 &703291119

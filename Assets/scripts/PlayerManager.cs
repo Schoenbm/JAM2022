@@ -57,12 +57,13 @@ public class PlayerManager : MonoBehaviour
         player = Instantiate(playerPrefab, position, Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
         player.GetComponent<Movement>().Manager = this;
+        //Add some invulnerability frames;
         yield return null;
     }
 
     Vector3 ClosestAvailablePosition(Vector3 position){
         Vector3 finalPos;
-        finalPos = position + new Vector3(-1,5,0);
+        finalPos = position + new Vector3(Random.Range(-1,1),32,0);
         return finalPos; 
     }
 

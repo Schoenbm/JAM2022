@@ -7,11 +7,15 @@ public class GameManager : MonoBehaviour
     public GameObject platformPrefab;
     public GameObject icePrefab;
     public GameObject scrapPrefab;
-    public GameObject parent;
+    public GameObject earthCore;
 
     public float timeBetweenItemsSpawn = 3f;
     float timeBeforeNextItemSpawn = 0f;
-    public int amount = 3; 
+    public int amount = 3;
+
+    int maxEachItems = 20;
+    int amountIce = 0;
+    int amountScrap = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +42,12 @@ public class GameManager : MonoBehaviour
         if(timeBeforeNextItemSpawn <= 0f){
             for(int i = 0; i < amount; i++){
                 timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
-                InstanciateIceItem();
-                InstanciateScrapItem();         
+                if(amountIce < maxEachItems)
+                    InstanciateIceItemRandom();
+                if(amountIce < maxEachItems)
+                    InstanciateScrapItemRandom();  
+                
+                //InstanciateIceItemPlatform();       
             }
             
         }
@@ -54,7 +62,8 @@ public class GameManager : MonoBehaviour
         Vector3 position = height * new Vector3(posX,posY,0);
         GameObject platform = Instantiate(platformPrefab, position, Quaternion.identity) as GameObject;
         platform.transform.eulerAngles = new Vector3(0,0,angle - 90);
-        platform.transform.parent = parent.transform;
+        platform.transform.parent = earthCore.transform;
+
         if(!platform.GetComponent<Platform>().isCorrect){
             Destroy(platform.gameObject);
             Debug.Log("Error platform L1");
@@ -70,7 +79,8 @@ public class GameManager : MonoBehaviour
         Vector3 position = height * new Vector3(posX,posY,0);
         GameObject platform = Instantiate(platformPrefab, position, Quaternion.identity) as GameObject;
         platform.transform.eulerAngles = new Vector3(0,0,angle - 90);
-        platform.transform.parent = parent.transform;
+        platform.transform.parent = earthCore.transform;
+
         if(!platform.GetComponent<Platform>().isCorrect){
             Destroy(platform.gameObject);
             Debug.Log("Error platform L2");
@@ -86,7 +96,8 @@ public class GameManager : MonoBehaviour
         Vector3 position = height * new Vector3(posX,posY,0);
         GameObject platform = Instantiate(platformPrefab, position, Quaternion.identity) as GameObject;
         platform.transform.eulerAngles = new Vector3(0,0,angle - 90);
-        platform.transform.parent = parent.transform;
+        platform.transform.parent = earthCore.transform;
+
         if(!platform.GetComponent<Platform>().isCorrect){
             Destroy(platform.gameObject);
             Debug.Log("Error platform L3");
@@ -94,25 +105,62 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void InstanciateIceItem(){
+    void InstanciateIceItemRandom(){
         int angle = (int)Random.Range(0f,359f);
         float posX = Mathf.Cos(angle * Mathf.Deg2Rad);
         float posY = Mathf.Sin(angle * Mathf.Deg2Rad);
         float height = Random.Range(32f,40f);
         Vector3 position = height * new Vector3(posX,posY,0);
         GameObject ice = Instantiate(icePrefab, position, Quaternion.identity);
-        ice.transform.parent = parent.transform;
+        ice.transform.parent = earthCore.transform;
+        ice.transform.eulerAngles = new Vector3(0,0,angle-90f);
+        amountIce++;
     }
 
-    void InstanciateScrapItem(){
+    void InstanciateScrapItemRandom(){
         int angle = (int)Random.Range(0f,359f);
         float posX = Mathf.Cos(angle * Mathf.Deg2Rad);
         float posY = Mathf.Sin(angle * Mathf.Deg2Rad);
         float height = Random.Range(32f,40f);
         Vector3 position = height * new Vector3(posX,posY,0);
         GameObject scrap = Instantiate(scrapPrefab, position, Quaternion.identity);
-        scrap.transform.parent = parent.transform;
+        scrap.transform.parent = earthCore.transform;
+        scrap.transform.eulerAngles = new Vector3(0,0,angle-90f);
+        amountScrap++;
     }
+
+    void InstanciateIceItemPlatform(){
+        GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
+        Debug.Log(platforms.Length);
+        float angle = Mathf.Atan2(this.transform.position.normalized.y , this.transform.position.normalized.x);
+
+        int index = (int)Random.Range(0,platforms.Length-1);
+        Vector3 position = platforms[index].transform.GetChild(0).gameObject.transform.position;
+        //Quaternion rotation = platforms[index].transform.rotation;
+
+        GameObject ice = Instantiate(icePrefab, position, Quaternion.identity, earthCore.transform);
+        ice.transform.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg);
+        ice.transform.parent = earthCore.transform;
+        ice.transform.position += new Vector3(0,1,0);
+        amountIce++;
+    }
+
+    void InstanciateScrapItemPlatform(){
+        GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
+        Debug.Log(platforms.Length);
+        float angle = Mathf.Atan2(this.transform.position.normalized.y , this.transform.position.normalized.x);
+
+        int index = (int)Random.Range(0,platforms.Length-1);
+        Vector3 position = platforms[index].transform.GetChild(0).gameObject.transform.position;
+        //Quaternion rotation = platforms[index].transform.rotation;
+
+        GameObject scrap = Instantiate(scrapPrefab, position, Quaternion.identity, earthCore.transform);
+        scrap.transform.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg);
+        scrap.transform.parent = earthCore.transform;
+        scrap.transform.position += new Vector3(0,1,0);
+        amountScrap++;
+    }
+
 
 
 }
