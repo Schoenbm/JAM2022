@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour
 
     int lifes = 3;
     
-    int iceCount;
+    public int iceCount;
     int metalScrapCount;
     public GameObject playerPrefab;
     public GameObject planet;
