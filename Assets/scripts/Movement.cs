@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
 
     public GameObject earth;
 
-    float jumpHeight = 1500f;
+    public float jumpHeight = 1500f;
 
     public float speed = 10f;
 
