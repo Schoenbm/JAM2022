@@ -7,6 +7,7 @@ public class Meteor : MonoBehaviour
 
     Rigidbody2D rb;
     float speed = 4f;
+    public GameObject lavaPrefab;
 
     void Start(){
         rb = this.GetComponent<Rigidbody2D>();
@@ -30,6 +31,7 @@ public class Meteor : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.tag == "Planet"){
             DestroyMeteor();
+            Instantiate(lavaPrefab, this.gameObject.transform.position, collision.gameObject.transform.rotation, collision.gameObject.transform) ;
             Destroy(this.gameObject);
         }
     }
