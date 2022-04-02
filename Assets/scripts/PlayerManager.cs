@@ -6,6 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
 
     int lifes = 3;
+    
+    int ice = 0 ;
     public GameObject playerPrefab;
     public GameObject planet;
     Vector3 position;
@@ -34,6 +36,11 @@ public class PlayerManager : MonoBehaviour
             StartCoroutine(RespawnPlayer());
         }
     }
+   
+    public void playerPick(){
+        ice += 1;
+    }
+    
 
     IEnumerator RespawnPlayer(){
         Debug.Log("Respawn player");

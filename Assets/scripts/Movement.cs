@@ -34,6 +34,11 @@ public class Movement : MonoBehaviour
             isAlive = false;
             Manager.playerDeath();
         }
+        if(collision.gameObject.tag == "Ice")
+        {
+            Destroy(collision.gameObject);
+            Manager.playerPick();
+        } 
     }
 
     void FixedUpdate(){
