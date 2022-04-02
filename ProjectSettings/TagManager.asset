@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Killable
+  - Planet
   layers:
   - Default
   - TransparentFX

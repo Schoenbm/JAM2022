@@ -6,7 +6,7 @@ public class Meteor : MonoBehaviour
 {
 
     Rigidbody2D rb;
-    float speed = 100f;
+    float speed = 1f;
 
     void Start(){
         rb = this.GetComponent<Rigidbody2D>();
@@ -15,17 +15,24 @@ public class Meteor : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 direction = transform.position - Vector3.zero;
+        Vector3 direction = -transform.position;
         Vector3 newPosition = transform.position + Time.deltaTime * speed * direction.normalized;
         transform.position = newPosition;
-
-        //rb.velocity = new Vector2(0,-speed * Time.deltaTime);
     }
 
 
-    void OnCollisionEnter2D(Collision2D collision){
+    void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.tag == "Player"){            
             Debug.Log("Hit player ! ");
+            collision.gameObject.GetComponent<Movement>().isAlive = false;
         }
+        if(collision.gameObject.tag == "Planet"){
+            DestroyMeteor();
+            Destroy(this.gameObject);
+        }
+    }
+    
+    void DestroyMeteor(){
+
     }
 }
