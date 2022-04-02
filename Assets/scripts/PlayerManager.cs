@@ -35,9 +35,10 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    IEnumerator RespawnPlayer(){        
+    IEnumerator RespawnPlayer(){
+        Debug.Log("Respawn player");
         position = ClosestAvailablePosition(transform.position);
-        Destroy(player);        
+        Destroy(player);
         yield return new WaitForSeconds(1.5f);
         player = Instantiate(playerPrefab, position, Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
@@ -52,6 +53,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     void EndGame(){
+        Destroy(player);
         //Move this function elsewhere
     }
 }

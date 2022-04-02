@@ -16,14 +16,14 @@ public class MeteorManager : MonoBehaviour
     {
         if(timeBeforeNextMeteor <= 0f){
             for(int i = 0; i < amount; i++){
-                Debug.Log("Create Meteor");
                 timeBeforeNextMeteor = timeBetweenMeteors;
                 int angle = (int)Random.Range(0f,359f);
                 float posX = Mathf.Cos(angle);
                 float posY = Mathf.Sin(angle);
                 Vector3 position = 70 * new Vector3(posX,posY,0);
                 GameObject meteor = Instantiate(MeteorPrefab, position, Quaternion.identity) as GameObject;
-                meteor.transform.parent = parent.transform;
+                meteor.transform.eulerAngles = new Vector3(0,0,angle);
+                meteor.transform.parent = parent.transform;                
             }
             
         }

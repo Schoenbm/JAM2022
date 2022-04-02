@@ -18,6 +18,11 @@ public class Meteor : MonoBehaviour
         Vector3 direction = -transform.position;
         Vector3 newPosition = transform.position + Time.deltaTime * speed * direction.normalized;
         transform.position = newPosition;
+
+        ParticleSystem ps = transform.GetChild(0).GetComponent<ParticleSystem>();
+        var velocity = ps.velocityOverLifetime;
+        velocity.x = -direction.x;
+        velocity.y = -direction.y;
     }
 
 
