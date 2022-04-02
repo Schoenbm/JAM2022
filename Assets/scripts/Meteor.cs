@@ -16,13 +16,14 @@ public class Meteor : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 direction = -transform.position;
-        Vector3 newPosition = transform.position + Time.deltaTime * speed * direction.normalized;
+        direction = direction.normalized;
+        Vector3 newPosition = transform.position + Time.deltaTime * speed * direction;
         transform.position = newPosition;
 
         ParticleSystem ps = transform.GetChild(0).GetComponent<ParticleSystem>();
         var velocity = ps.velocityOverLifetime;
-        velocity.x = -direction.x;
-        velocity.y = -direction.y;
+        velocity.x = -10 * direction.x;
+        velocity.y = -10 * direction.y;
     }
 
 
