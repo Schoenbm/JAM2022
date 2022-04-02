@@ -24,6 +24,7 @@ public class Movement : MonoBehaviour
     }
 
     void Update(){
+        rb.AddForce(Vector2.down * 0.1f);
         if(Input.GetButtonDown("Jump") && !jump){
             jump = true;
         }
@@ -37,8 +38,13 @@ public class Movement : MonoBehaviour
         if(collision.gameObject.tag == "Ice")
         {
             Destroy(collision.gameObject);
-            Manager.playerPick();
-        } 
+            Manager.playerPickIce();
+        }
+        if(collision.gameObject.tag == "Scrap")
+        {
+            Destroy(collision.gameObject);
+            Manager.playerPickScrap();
+        }
     }
 
     void FixedUpdate(){

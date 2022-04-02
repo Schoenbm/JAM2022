@@ -7,7 +7,8 @@ public class PlayerManager : MonoBehaviour
 
     int lifes = 3;
     
-    int ice = 0 ;
+    int iceCount;
+    int metalScrapCount;
     public GameObject playerPrefab;
     public GameObject planet;
     Vector3 position;
@@ -21,6 +22,8 @@ public class PlayerManager : MonoBehaviour
         player = Instantiate(playerPrefab, new Vector3(0,31,0), Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
         player.GetComponent<Movement>().Manager = this;
+        iceCount = 0;
+        metalScrapCount = 0;
     }
 
     // Update is called once per frame
@@ -37,8 +40,12 @@ public class PlayerManager : MonoBehaviour
         }
     }
    
-    public void playerPick(){
-        ice += 1;
+    public void playerPickIce(){
+        iceCount += 1;
+    }
+
+    public void playerPickScrap(){
+        metalScrapCount += 1;
     }
     
 
