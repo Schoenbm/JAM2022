@@ -283,7 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MeteorPrefab: {fileID: 8271997421859587314, guid: 2fb10e6bf44362a4c83d638cdfb8aafb, type: 3}
   parent: {fileID: 127958092}
-  timeBetweenMeteors: 2
+  timeBetweenMeteors: 0.2
 --- !u!1001 &703291119
 PrefabInstance:
   m_ObjectHideFlags: 0
