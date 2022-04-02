@@ -59,14 +59,11 @@ public class Movement : MonoBehaviour
         RaycastHit2D ray = Physics2D.Raycast(this.transform.position, Vector2.down,1.5f, groundMask);
         if (ray.collider)
         {
-            Debug.Log("grounded");
-            Debug.Log(ray.collider.transform.gameObject.tag);
             isGrounded = true;
         }
         else
         {
             isGrounded = false;
-            Debug.Log("not grounded");
         }
 
         Debug.DrawRay(this.transform.position, Vector2.down, Color.red, 1.2f);
