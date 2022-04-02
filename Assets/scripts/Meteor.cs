@@ -7,7 +7,7 @@ public class Meteor : MonoBehaviour
 
     Rigidbody2D rb;
     float speed = 4f;
-    float rotSpeed = 15f;
+    float rotSpeed = 20f;
     public GameObject lavaPrefab;
 
     void Start(){
@@ -39,7 +39,6 @@ public class Meteor : MonoBehaviour
             DestroyMeteor();
             float angle = Mathf.Atan2(this.transform.position.normalized.y , this.transform.position.normalized.x);
             GameObject lava = Instantiate(lavaPrefab, this.transform.position - new Vector3(0,1,0), Quaternion.identity, this.gameObject.transform.parent.parent);;
-            Debug.Log(angle);
             lava.transform.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg - 90f);
             Destroy(this.gameObject);
         }

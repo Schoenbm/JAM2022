@@ -15,6 +15,8 @@ public class Movement : MonoBehaviour
     LayerMask groundMask;
     bool isGrounded = true;
     bool jump = false;
+    public int maxExtraJump = 1;
+    int extraJump = 1;
     public bool isAlive;
 
     public PlayerManager Manager;
@@ -23,14 +25,19 @@ public class Movement : MonoBehaviour
         groundMask = LayerMask.GetMask("Planet", "Platform");
         isAlive = true;
         rb = this.GetComponent<Rigidbody2D>();
+        extraJump = maxExtraJump;
     }
 
     void Update(){
-        rb.AddForce(Vector2.down * 0.1f);
-        if(Input.GetButtonDown("Jump") && !jump && isGrounded){
+        rb.AddForce(Vector2.down * 0.1f); 
+        
+        if (Input.GetButtonDown("Jump") && !jump && isGrounded){
             jump = true;
         }
-        
+        if (Input.GetButtonDown("Jump") && rb.velocity.y < 8f && !isGrounded && extraJump > 0)
+        {
+            jump = true;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision){
@@ -49,7 +56,7 @@ public class Movement : MonoBehaviour
             Manager.playerPickScrap();
         }
     }
-
+        
     void FixedUpdate(){
         if(isAlive){
             Vector3 rotation = new Vector3(0,0,Input.GetAxis("Horizontal") * speed * Time.deltaTime);
@@ -68,9 +75,19 @@ public class Movement : MonoBehaviour
 
         Debug.DrawRay(this.transform.position, Vector2.down, Color.red, 1.2f);
 
-        if(jump && isGrounded){
+        if (jump && !isGrounded && extraJump > 0 && rb.velocity.y < 8f)
+        {
+            rb.AddForce(-40 * rb.velocity.y * Vector2.up);
             rb.AddForce(Vector2.up * jumpHeight);
             jump = false;
+            extraJump -= 1;
+        }
+
+        if (jump && isGrounded && rb.velocity.y < 2f)
+        {
+            rb.AddForce(Vector2.up * jumpHeight);
+            jump = false;
+            extraJump = maxExtraJump;
         }
     }
 }   
