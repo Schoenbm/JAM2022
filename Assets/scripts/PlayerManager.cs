@@ -18,14 +18,12 @@ public class PlayerManager : MonoBehaviour
     {
         player = Instantiate(playerPrefab, new Vector3(0,31,0), Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
+        player.GetComponent<Movement>().Manager = this;
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(!player.GetComponent<Movement>().isAlive)
-            playerDeath();
-    }    
+    void Update(){      
+    }
 
     public void playerDeath(){
         lifes -= 1;
@@ -39,10 +37,11 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator RespawnPlayer(){        
         position = ClosestAvailablePosition(transform.position);
-        Destroy(player);
+        Destroy(player);        
+        yield return new WaitForSeconds(1.5f);
         player = Instantiate(playerPrefab, position, Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
-        yield return new WaitForSeconds(1.5f);
+        player.GetComponent<Movement>().Manager = this;
         yield return null;
     }
 

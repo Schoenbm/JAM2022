@@ -6,7 +6,7 @@ public class Meteor : MonoBehaviour
 {
 
     Rigidbody2D rb;
-    float speed = 1f;
+    float speed = 4f;
 
     void Start(){
         rb = this.GetComponent<Rigidbody2D>();
@@ -22,10 +22,6 @@ public class Meteor : MonoBehaviour
 
 
     void OnTriggerEnter2D(Collider2D collision){
-        if(collision.gameObject.tag == "Player"){            
-            Debug.Log("Hit player ! ");
-            collision.gameObject.GetComponent<Movement>().isAlive = false;
-        }
         if(collision.gameObject.tag == "Planet"){
             DestroyMeteor();
             Destroy(this.gameObject);

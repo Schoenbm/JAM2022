@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour
     bool jump = false;
     public bool isAlive;
 
+    public PlayerManager Manager;
+
     void Start(){
         isAlive = true;
         rb = this.GetComponent<Rigidbody2D>();
@@ -27,12 +29,21 @@ public class Movement : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collision){
+        if(collision.gameObject.tag == "Killable"){
+            isAlive = false;
+            Manager.playerDeath();
+        }
+    }
+
     void FixedUpdate(){
-        Vector3 rotation = new Vector3(0,0,Input.GetAxis("Horizontal") * speed * Time.deltaTime);
-        earth.transform.eulerAngles += rotation;
+        if(isAlive){
+            Vector3 rotation = new Vector3(0,0,Input.GetAxis("Horizontal") * speed * Time.deltaTime);
+            earth.transform.eulerAngles += rotation;
+        }
+        
 
         if(jump){
-            Debug.Log("Jump");
             rb.AddForce(Vector2.up * jumpHeight);
             jump = false;
         }
