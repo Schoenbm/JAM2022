@@ -5,7 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject platformPrefab;
+    public GameObject icePrefab;
+    public GameObject scrapPrefab;
     public GameObject parent;
+
+    public float timeBetweenItemsSpawn = 3f;
+    float timeBeforeNextItemSpawn = 0f;
+    public int amount = 3; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +32,18 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void FixedUpdate(){
+        if(timeBeforeNextItemSpawn <= 0f){
+            for(int i = 0; i < amount; i++){
+                timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
+                InstanciateIceItem();
+                InstanciateScrapItem();         
+            }
+            
+        }
+        timeBeforeNextItemSpawn -= Time.deltaTime;
     }
 
     void InstanciateLayer1Platform(){
@@ -73,6 +92,26 @@ public class GameManager : MonoBehaviour
             Debug.Log("Error platform L3");
             InstanciateLayer3Platform();
         }
+    }
+
+    void InstanciateIceItem(){
+        int angle = (int)Random.Range(0f,359f);
+        float posX = Mathf.Cos(angle * Mathf.Deg2Rad);
+        float posY = Mathf.Sin(angle * Mathf.Deg2Rad);
+        float height = Random.Range(32f,40f);
+        Vector3 position = height * new Vector3(posX,posY,0);
+        GameObject ice = Instantiate(icePrefab, position, Quaternion.identity);
+        ice.transform.parent = parent.transform;
+    }
+
+    void InstanciateScrapItem(){
+        int angle = (int)Random.Range(0f,359f);
+        float posX = Mathf.Cos(angle * Mathf.Deg2Rad);
+        float posY = Mathf.Sin(angle * Mathf.Deg2Rad);
+        float height = Random.Range(32f,40f);
+        Vector3 position = height * new Vector3(posX,posY,0);
+        GameObject scrap = Instantiate(scrapPrefab, position, Quaternion.identity);
+        scrap.transform.parent = parent.transform;
     }
 
 
