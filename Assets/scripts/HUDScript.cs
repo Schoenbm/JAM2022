@@ -16,13 +16,13 @@ public class HUDScript : MonoBehaviour
         iceNumberText.text = "Ice: " + 0;
         if (_playerManager == null )
         {
-            Debug.LogError(_playerManager.ice);
+            Debug.LogError(_playerManager.iceCount);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        iceNumberText.text = "Ice:" + _playerManager.ice;
+        iceNumberText.text = "Ice:" + _playerManager.iceCount;
     }
 }
