@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
     Vector3 position;
     GameObject player;
     public Planet myPlanet;
-    public GameManager GameManager;
+    public GameManager gameManager;
 
 
     void Start()
