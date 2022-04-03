@@ -47,3 +47,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Collectables
+    uniqueID: 2718931775
+    locked: 0
