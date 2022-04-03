@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using TMPro;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class PlayerManager : MonoBehaviour
 
     public bool invulnerable;
 
+    public Canvas HUD;
+    public TextMeshProUGUI iceCounter;
+    public TextMeshProUGUI scrapCounter;
 
     void Start()
     {
@@ -32,6 +36,8 @@ public class PlayerManager : MonoBehaviour
         Planet myPlanet = planet.GetComponent<Planet>();        
         iceCount = 0;
         metalScrapCount = 0;
+        iceCounter = HUD.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+        scrapCounter = HUD.transform.GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
@@ -42,6 +48,9 @@ public class PlayerManager : MonoBehaviour
         else if(player){
             player.GetComponent<SpriteRenderer>().color = Color.white;
         }
+
+        iceCounter.SetText(metalScrapCount.ToString());
+        scrapCounter.SetText(iceCount.ToString());
     }
 
     public void playerDeath(){

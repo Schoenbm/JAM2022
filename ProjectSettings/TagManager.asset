@@ -53,3 +53,6 @@ TagManager:
   - name: Planet
     uniqueID: 1934105127
     locked: 0
+  - name: Shop
+    uniqueID: 4148381277
+    locked: 0
