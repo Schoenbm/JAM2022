@@ -68,6 +68,7 @@ public class PlayerManager : MonoBehaviour
         player = Instantiate(playerPrefab, position, Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
         player.GetComponent<Movement>().Manager = this;
+        camera.m_Follow = player.GetComponent<Movement>().cameraTracker.transform;
         //Add some invulnerability frames;
         yield return null;
     }

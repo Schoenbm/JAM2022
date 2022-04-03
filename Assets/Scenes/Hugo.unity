@@ -128,6 +128,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3229884542223975046, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
   m_PrefabInstance: {fileID: 703291119}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &127958094 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7710279538624980559, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+  m_PrefabInstance: {fileID: 703291119}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127958092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44e08e8aadbfda45b58c9db058ffc21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &561751327
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +300,10 @@ MonoBehaviour:
   gameManager: {fileID: 639453175}
   MeteorPrefab: {fileID: 8271997421859587314, guid: 2fb10e6bf44362a4c83d638cdfb8aafb, type: 3}
   parent: {fileID: 127958092}
+  earthCore: {fileID: 0}
   timeBetweenMeteors: 2
+  maxAmount: 0
+  myPlanet: {fileID: 127958094}
 --- !u!114 &639453175
 MonoBehaviour:
   m_ObjectHideFlags: 0

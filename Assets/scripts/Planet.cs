@@ -6,26 +6,28 @@ public class Planet : MonoBehaviour
 {
 
     public GameManager gameManager;
-    int health = 5000;
-    float timeBetweenHpLoss = 2f;
+    public float maxHealth = 5000;
+    public float health;
+    float timeBetweenHpLoss = 0.5f;
     float timeBeforeNextHpLoss = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = maxHealth;
     }
 
     // Update is called once per frame
-    void FixedUpdateUpdate()
+    void FixedUpdate()
     {
         if(health <= 0){
             gameManager.EndGame();
         }
         if(timeBeforeNextHpLoss <= 0f){
-            health-=5;
+            health-=10;
             timeBeforeNextHpLoss = timeBetweenHpLoss;
-        }
-        timeBeforeNextHpLoss += Time.deltaTime;
+            //Debug.Log(health);
+        }        
+        timeBeforeNextHpLoss -= Time.deltaTime;
     }
 
     public void loseHealth(int amount){
