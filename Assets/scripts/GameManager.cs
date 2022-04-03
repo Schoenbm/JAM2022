@@ -22,10 +22,11 @@ public class GameManager : MonoBehaviour
     public int amount = 3;
     int amountIce = 0;
     int amountScrap = 0;
-
     public bool gameOver;
     bool gamePause;
-
+    //Rocket Health Varibiable
+    public int maxHealthRocket = 100;
+    public int healthRocket = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,7 +68,10 @@ public class GameManager : MonoBehaviour
         }
         
     }
-
+    public void healRocket(int heal)
+    {
+        healthRocket += heal;
+    }
     public void PauseGame(){
         Time.timeScale = 0f;
         gamePause = true;

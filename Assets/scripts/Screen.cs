@@ -10,9 +10,9 @@ public class NewBehaviourScript : MonoBehaviour
     public TextMeshProUGUI Cost;
     public TextMeshProUGUI Effect;
     public TextMeshProUGUI Level;
-    public playerData player;
+    //public playerData player;
     private void Update()
     {
-        if(EventSystem.current)
+        //if(EventSystem.current)
     }
 }
