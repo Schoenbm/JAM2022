@@ -228,14 +228,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3229884541577928414}
     m_Modifications:
-    - target: {fileID: 91859209451924270, guid: 792b60a4edac3514fab574429617ff47, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3162275837202895798, guid: 792b60a4edac3514fab574429617ff47, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4045166011490604612, guid: 792b60a4edac3514fab574429617ff47, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -283,18 +275,6 @@ PrefabInstance:
     - target: {fileID: 4045166011490604615, guid: 792b60a4edac3514fab574429617ff47, type: 3}
       propertyPath: m_Name
       value: Rocket
-      objectReference: {fileID: 0}
-    - target: {fileID: 4944197139834666647, guid: 792b60a4edac3514fab574429617ff47, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6117018659415730485, guid: 792b60a4edac3514fab574429617ff47, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7570067199984796474, guid: 792b60a4edac3514fab574429617ff47, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 792b60a4edac3514fab574429617ff47, type: 3}
