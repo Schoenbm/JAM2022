@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.EventSystems;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Canvas HUD;
+    public TextMeshProUGUI Cost;
+    public TextMeshProUGUI Effect;
+    public TextMeshProUGUI Level;
+    public playerData player;
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(EventSystem.current)
     }
 }
