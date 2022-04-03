@@ -142,9 +142,11 @@ public class GameManager : MonoBehaviour
 
         int index = (int)Random.Range(0,platforms.Length-1);
         Vector3 position = platforms[index].transform.position;
+        Vector3 rotation = platforms[index].transform.rotation.eulerAngles;
+
         GameObject ice = Instantiate(icePrefab, position, Quaternion.identity, earthCore.transform);
         ice.transform.parent = earthCore.transform;
-        ice.transform.eulerAngles = new Vector3(0, 0, 0);        
+        ice.transform.eulerAngles = rotation;    
         ice.transform.position += position.normalized;
         amountIce++;
     }
@@ -156,10 +158,11 @@ public class GameManager : MonoBehaviour
 
         int index = (int)Random.Range(0,platforms.Length-1);
         Vector3 position = platforms[index].transform.position;
+        Vector3 rotation = platforms[index].transform.rotation.eulerAngles;
 
         GameObject scrap = Instantiate(scrapPrefab, position, Quaternion.identity, earthCore.transform);
         scrap.transform.parent = earthCore.transform;
-        scrap.transform.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg);
+        scrap.transform.eulerAngles = rotation;
         scrap.transform.position += position.normalized;
         amountScrap++;
     }
