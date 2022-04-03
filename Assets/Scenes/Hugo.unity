@@ -302,7 +302,7 @@ MonoBehaviour:
   gameManager: {fileID: 639453175}
   MeteorPrefab: {fileID: 8271997421859587314, guid: 2fb10e6bf44362a4c83d638cdfb8aafb, type: 3}
   parent: {fileID: 127958092}
-  earthCore: {fileID: 0}
+  earthCore: {fileID: 703291120}
   timeBetweenMeteors: 2
   maxTimeBetweenMeteors: 0
   minTimeBetweenMeteors: 0
@@ -326,6 +326,8 @@ MonoBehaviour:
   scrapPrefab: {fileID: 5695617301470431585, guid: 5b4b8ed3eb05e3942b442c1b05f199fc, type: 3}
   earthCore: {fileID: 703291120}
   timeBetweenItemsSpawn: 3
+  lifeSpanIce: 0
+  lifeSpanScrap: 0
   amount: 3
   gameOver: 0
 --- !u!1001 &703291119

@@ -6,6 +6,8 @@ public class Collectible : MonoBehaviour
 {
     public float lifeSpan;
     float timeToDespawn;
+
+    public GameManager gameManager;
     void Start()
     {
         timeToDespawn = lifeSpan;

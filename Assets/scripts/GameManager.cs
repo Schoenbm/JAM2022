@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     public float lifeSpanIce;
     public float lifeSpanScrap;
     public int amount = 3;
-    int maxEachItems = 20;
     int amountIce = 0;
     int amountScrap = 0;
 
@@ -61,18 +60,10 @@ public class GameManager : MonoBehaviour
         if(!gameOver && timeBeforeNextItemSpawn <= 0f){
             for(int i = 0; i < amount; i++){
                 timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
-                if(amountIce < maxEachItems){
                     //InstanciateIceItemRandom();
                     InstanciateIceItemPlatform(); 
-                }
-                    
-                if(amountIce < maxEachItems){
                     //InstanciateScrapItemRandom();
                     InstanciateScrapItemPlatform();
-                }
-                     
-                
-                      
             }
             
         }
@@ -137,7 +128,7 @@ public class GameManager : MonoBehaviour
         GameObject ice = Instantiate(icePrefab, position, Quaternion.identity, earthCore.transform);
         ice.transform.parent = earthCore.transform;
         ice.transform.eulerAngles = rotation;    
-        ice.transform.position += position.normalized;
+        ice.transform.position += 2*position.normalized;
         ice.GetComponent<Collectible>().lifeSpan = lifeSpanIce;
         amountIce++;
     }
@@ -157,7 +148,7 @@ public class GameManager : MonoBehaviour
         GameObject scrap = Instantiate(scrapPrefab, position, Quaternion.identity, earthCore.transform);
         scrap.transform.parent = earthCore.transform;
         scrap.transform.eulerAngles = rotation;
-        scrap.transform.position += position.normalized;
+        scrap.transform.position += 2*position.normalized;
         scrap.GetComponent<Collectible>().lifeSpan = lifeSpanScrap;
         amountScrap++;
     }
