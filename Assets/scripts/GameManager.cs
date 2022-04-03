@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     //Rocket Health Varibiable
     public int maxHealthRocket = 100;
     public int healthRocket = 1;
+
+    AudioSource MainMusic;
+    AudioLowPassFilter MusicFilter;
     // Start is called before the first frame update
     void Start()
     {
