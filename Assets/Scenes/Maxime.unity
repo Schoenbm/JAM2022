@@ -271,6 +271,7 @@ MonoBehaviour:
   planet: {fileID: 703291120}
   myPlanet: {fileID: 127958098}
   gameManager: {fileID: 639453175}
+  invulnerable: 0
 --- !u!4 &639453173
 Transform:
   m_ObjectHideFlags: 0
@@ -325,6 +326,8 @@ MonoBehaviour:
   scrapPrefab: {fileID: 5695617301470431585, guid: 5b4b8ed3eb05e3942b442c1b05f199fc, type: 3}
   earthCore: {fileID: 703291120}
   timeBetweenItemsSpawn: 3
+  lifeSpanIce: 0
+  lifeSpanScrap: 0
   amount: 3
   gameOver: 0
 --- !u!1001 &703291119
@@ -334,13 +337,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 583479258, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1293581221, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1293581222, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293581222, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_TagString
       value: IceStation
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036466818597592199, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2.9239
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036466818597592199, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.8623
       objectReference: {fileID: 0}
     - target: {fileID: 3229884541577928414, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_RootOrder
@@ -469,8 +488,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -588,7 +607,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7991486573012034317, guid: 9be51695a77ba5248897e8c75b6fd199, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 2.1213872
+      value: 2.1252408
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991486573012034317, guid: 9be51695a77ba5248897e8c75b6fd199, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7991486573012034318, guid: 9be51695a77ba5248897e8c75b6fd199, type: 3}
       propertyPath: m_Name
