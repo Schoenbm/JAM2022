@@ -102,7 +102,7 @@ public class Movement : MonoBehaviour
 
         Debug.DrawRay(this.transform.position, Vector2.down, Color.red, 1.2f);
 
-        if (jump && isGrounded && rb.velocity.y < 2f)
+        if (jump && isGrounded && rb.velocity.y < 0.5f)
         {
             rb.AddForce(Vector2.up * jumpHeight);
             jump = false;

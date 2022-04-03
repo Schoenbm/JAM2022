@@ -36,10 +36,10 @@ public class PlayerManager : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate(){
-        if(invulnerable){
+        if(invulnerable && player){
             player.GetComponent<SpriteRenderer>().color = Color.blue;
         }
-        else{
+        else if(player){
             player.GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
