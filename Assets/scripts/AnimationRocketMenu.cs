@@ -17,6 +17,6 @@ public class AnimationRocketMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        shadow.fillAmount= (100-(float)_gameManager.healthRocket) / (float)_gameManager.maxHealthRocket ;
+        shadow.fillAmount= ((float)_gameManager.maxHealthRocket-(float)_gameManager.healthRocket) / (float)_gameManager.maxHealthRocket ;
     }
 }

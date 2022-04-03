@@ -32,9 +32,9 @@ public class GameManager : MonoBehaviour
     {
         lifeSpanIce = 10f;
         lifeSpanScrap = 30f;
-        MainMusic = this.GetComponent<AudioSource>();
-        MusicFilter = this.GetComponent<AudioLowPassFilter>();
-        MusicFilter.cutoffFrequency = 22000;
+        //MainMusic = this.GetComponent<AudioSource>();
+        //MusicFilter = this.GetComponent<AudioLowPassFilter>();
+        //MusicFilter.cutoffFrequency = 22000;
         gameOver = false;
         gamePause = false;
         timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
@@ -78,13 +78,13 @@ public class GameManager : MonoBehaviour
     public void PauseGame(){
         Time.timeScale = 0f;
         gamePause = true;
-        MusicFilter.cutoffFrequency = 500;
+       // MusicFilter.cutoffFrequency = 500;
         PauseMenu.SetActive(true);
     }
     public void UnPauseGame(){        
         gamePause = false;
         PauseMenu.SetActive(false);
-        MusicFilter.cutoffFrequency = 22000;
+        //MusicFilter.cutoffFrequency = 22000;
         Time.timeScale = 1f;
     }
 

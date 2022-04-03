@@ -45,7 +45,7 @@ public class MeteorManager : MonoBehaviour
                 int angle = (int)Random.Range(0f,359f);
                 float posX = Mathf.Cos(angle);
                 float posY = Mathf.Sin(angle);
-                Vector3 position = 70 * new Vector3(posX,posY,0);
+                Vector3 position = 90 * new Vector3(posX,posY,0);
                 GameObject meteor = Instantiate(MeteorPrefab, position, Quaternion.identity) as GameObject;
                 meteor.transform.parent = parent.transform;
                 meteor.GetComponent<Meteor>().gameManager = gameManager;

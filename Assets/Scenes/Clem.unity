@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e5d891f6daf04137a72328d48575e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadow: {fileID: 0}
+  shadow: {fileID: 326760055}
 --- !u!114 &326760054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2857,7 +2857,6 @@ MonoBehaviour:
   gameOver: 0
   maxHealthRocket: 100
   healthRocket: 1
-  amountHealthRocket: 33
 --- !u!114 &1723057692
 MonoBehaviour:
   m_ObjectHideFlags: 0
