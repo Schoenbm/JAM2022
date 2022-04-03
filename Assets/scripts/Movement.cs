@@ -6,11 +6,8 @@ public class Movement : MonoBehaviour
 {
 
     public GameObject earth;
-
     public float jumpHeight = 1500f;
-
     public float speed = 10f;
-
     Rigidbody2D rb;
     LayerMask groundMask;
     bool isGrounded = true;
@@ -55,18 +52,27 @@ public class Movement : MonoBehaviour
             Destroy(collision.gameObject);
             Manager.playerPickScrap();
         }
+        if (collision.gameObject.tag == "IceStation")
+        {
+            collision.gameObject.GetComponent<IceStation>().setActiveDialogue(true);
+        }
     }
 
-    void OnCollisionStay(Collision collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "BaseHealth")
+        if (collision.gameObject.tag == "IceStation")
         {
-            //WHY I CANT COME HERE ?????? :@
-            Debug.Log("Player Sell Ice" );
-            if (Input.GetButtonDown("E"))//E is not mapping in unity enter is probably a best choice
+            collision.gameObject.GetComponent<IceStation>().setActiveDialogue(false);
+        }
+    }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "IceStation")
+        {
+            if (Input.GetKeyDown("e"))
             {
                 Manager.playerSellIce();
-            } 
+            }
         } 
     }
 
