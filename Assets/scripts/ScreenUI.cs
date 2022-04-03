@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class Screen : MonoBehaviour
+public class ScreenUI : MonoBehaviour
 {
     public TextMeshProUGUI Cost;
     public TextMeshProUGUI Effect;
@@ -17,10 +17,12 @@ public class Screen : MonoBehaviour
     public GameObject RepairButton;
     public GameObject UpgradeIceButton;
 
+    public PlayerData data;
+
     private void Update()
     {
         if (EventSystem.current.currentSelectedGameObject == SpeedButton) {
-            Cost.SetText("Cost :\n 1");
+            Cost.SetText("Cost :\n");
             Effect.SetText("Effect :\n Run faster");
             Level.SetText("Level : 1");
         }

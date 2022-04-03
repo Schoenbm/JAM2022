@@ -23,6 +23,19 @@ public class PlayerData : MonoBehaviour
     Movement playerMovement;
     PlayerManager playerManager;
 
+    private void Start()
+    {
+        playerMovement = this.gameObject.GetComponent<Movement>();
+        playerManager = this.gameObject.GetComponent<PlayerManager>();
+        levelSpeed = 1;
+        levelJump = 1;
+        levelIce = 1;
+        levelExtraJump = 1;
+        playerManager.iceValue = ice[1];
+        playerMovement.speed = speed[1];
+        playerMovement.maxExtraJump = extraJump[1];
+        playerMovement.jumpHeight = jump[1];
+    }
     public int getCost(string category)
     {
         switch (category)
@@ -57,11 +70,36 @@ public class PlayerData : MonoBehaviour
                 break;
             case "ice":
                 levelIce++;
-                playerMovement.maxExtraJump = ice[levelIce];
+                playerManager.iceValue = ice[levelIce];
                 break;
             default: 
                 Debug.Log("Wrong String");
                 break;
+        }
+    }
+
+    public string getLevel(string category)
+    {
+        switch (category)
+        {
+            case "speed":
+                if (levelSpeed == speed.Count)
+                    return "max";
+                return levelSpeed.ToString();
+            case "jump":
+                if (levelJump == jump.Count)
+                    return "max";
+                return levelJump.ToString();
+            case "extraJump":
+                if (levelExtraJump == extraJump.Count)
+                    return "max";
+                return levelExtraJump.ToString();
+            case "ice":
+                if (levelIce == ice.Count)
+                    return "max";
+                return levelIce.ToString();
+            default:
+                return "no level";
         }
     }
 }
