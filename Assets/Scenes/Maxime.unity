@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227c61da2f8ed3f41832d111ec15270d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iceCount: 0
   playerPrefab: {fileID: 3417853700374901729, guid: 3a797e77a9143b247b11d9699b3c37c5, type: 3}
   planet: {fileID: 703291120}
 --- !u!4 &639453173
@@ -298,7 +299,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformPrefab: {fileID: 8656096775896514992, guid: f7ad06260883ac94e903b5b0b15df1c0, type: 3}
-  parent: {fileID: 703291120}
+  icePrefab: {fileID: 6612716061669064303, guid: 2b4783e46dd029a47a92d03bfa0642ed, type: 3}
+  scrapPrefab: {fileID: 5695617301470431585, guid: 5b4b8ed3eb05e3942b442c1b05f199fc, type: 3}
+  earthCore: {fileID: 703291120}
+  timeBetweenItemsSpawn: 3
+  amount: 3
 --- !u!1001 &703291119
 PrefabInstance:
   m_ObjectHideFlags: 0
