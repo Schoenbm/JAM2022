@@ -21,14 +21,15 @@ public class GameManager : MonoBehaviour
     public float lifeSpanScrap;
     public int amount = 3;
     int amountIce = 0;
-    int amountScrap = 1000;
-
+    int amountScrap = 0;
     public bool gameOver;
     bool gamePause;
+    //Rocket Health Varibiable
+    public int maxHealthRocket = 100;
+    public int healthRocket = 1;
 
     AudioSource MainMusic;
     AudioLowPassFilter MusicFilter;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -73,11 +74,14 @@ public class GameManager : MonoBehaviour
         }
         
     }
-
+    public void healRocket(int heal)
+    {
+        healthRocket += heal;
+    }
     public void PauseGame(){
         Time.timeScale = 0f;
         gamePause = true;
-        MusicFilter.cutoffFrequency = 500;
+       MusicFilter.cutoffFrequency = 500;
         PauseMenu.SetActive(true);
     }
     public void UnPauseGame(){        
@@ -205,6 +209,27 @@ public class GameManager : MonoBehaviour
         foreach(GameObject go in scrapItems){
             Destroy(go);
         }
+        GameObject[] meteors = GameObject.FindGameObjectsWithTag("Killable");
+        foreach(GameObject go in meteors){
+            Destroy(go);
+        }
+        StartCoroutine(DezoomCamera());
+        earthCore.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        earthCore.transform.GetChild(0).GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
+        earthCore.transform.GetChild(0).GetChild(1).gameObject.GetComponent<ParticleSystem>().Play();
+        StartCoroutine(DestroyEverything());
     }
+
+    IEnumerator DezoomCamera(){
+        if(CMcamera.transform.position.z > -250)
+            CMcamera.transform.position = CMcamera.transform.position + new Vector3(0, 0, -5);
+        yield return new WaitForSeconds(1f);
+    }
+
+    IEnumerator DestroyEverything(){
+        yield return new WaitForSeconds(5f);
+        Destroy(earthCore.gameObject);
+    }
+
 
 }

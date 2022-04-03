@@ -108,7 +108,6 @@ public class Movement : MonoBehaviour
         }
     }
 
-
     void FixedUpdate(){
         if(isAlive){
             Vector3 rotation = new Vector3(0,0,Input.GetAxis("Horizontal") * speed * Time.deltaTime);

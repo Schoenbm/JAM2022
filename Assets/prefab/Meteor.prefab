@@ -5009,6 +5009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lavaPrefab: {fileID: 592114253732771372, guid: 70a04e49b25367a46bd8575ae67561bf, type: 3}
+  gameManager: {fileID: 0}
 --- !u!1 &8271997422163261817
 GameObject:
   m_ObjectHideFlags: 0

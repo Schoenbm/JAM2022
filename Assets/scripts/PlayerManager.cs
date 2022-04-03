@@ -50,8 +50,8 @@ public class PlayerManager : MonoBehaviour
             player.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
-        iceCounter.SetText(metalScrapCount.ToString());
-        scrapCounter.SetText(iceCount.ToString());
+        //iceCounter.SetText(metalScrapCount.ToString());
+        //scrapCounter.SetText(iceCount.ToString());
     }
 
     public void playerDeath(){
