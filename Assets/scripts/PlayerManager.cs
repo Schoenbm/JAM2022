@@ -61,10 +61,12 @@ public class PlayerManager : MonoBehaviour
     }
    
     public void playerPickIce(){
+        FindObjectOfType<AudioManager>().Play("Pickup Item");
         iceCount += 1*iceValue;
     }
 
     public void playerPickScrap(){
+        FindObjectOfType<AudioManager>().Play("Pickup Item");
         metalScrapCount += 1;
     }
 

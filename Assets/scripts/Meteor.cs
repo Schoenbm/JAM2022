@@ -42,6 +42,7 @@ public class Meteor : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.tag == "Planet"){
+            FindObjectOfType<AudioManager>().Play("Meteor Crash");
             float angle = Mathf.Atan2(this.transform.position.normalized.y , this.transform.position.normalized.x);
             GameObject lava = Instantiate(lavaPrefab, this.transform.position, Quaternion.identity, this.gameObject.transform.parent.parent);;
             lava.transform.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg - 90f);
@@ -55,7 +56,6 @@ public class Meteor : MonoBehaviour
         this.GetComponent<SpriteRenderer>().enabled = false;
         gameManager.CameraShake();
         Trail.Stop();
-        Debug.Log("Boom");
         yield return new WaitForSeconds(2f);
         Destroy(this.gameObject);
     }
