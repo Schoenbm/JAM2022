@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
 {
 
     int lifes = 3;
+    public int iceValue = 10;
 
     public CinemachineVirtualCamera cineCamera;
     public int iceCount;
@@ -45,15 +46,14 @@ public class PlayerManager : MonoBehaviour
     }
    
     public void playerPickIce(){
-        iceCount += 1;
+        iceCount += 1*iceValue;
     }
 
     public void playerPickScrap(){
         metalScrapCount += 1;
     }
 
-    public void playerSellIce()
-    {
+    public void playerSellIce() {
         myPlanet.plusHealth(iceCount);
         iceCount = 0;
     }

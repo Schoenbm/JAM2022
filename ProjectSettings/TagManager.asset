@@ -9,7 +9,7 @@ TagManager:
   - Ice
   - Scrap
   - Platform
-  - BaseHealth
+  - IceStation
   layers:
   - Default
   - TransparentFX
