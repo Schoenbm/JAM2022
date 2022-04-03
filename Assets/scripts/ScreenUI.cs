@@ -18,25 +18,30 @@ public class ScreenUI : MonoBehaviour
     public GameObject UpgradeIceButton;
 
     public PlayerData data;
+    PlayerManager playerManager;
 
+    private void Awake()
+    {
+        playerManager = data.gameObject.GetComponent<PlayerManager>();
+    }
     private void Update()
     {
         if (EventSystem.current.currentSelectedGameObject == SpeedButton) {
-            Cost.SetText("Cost :\n");
+            Cost.SetText("Cost :\n" + data.getCost("speed"));
             Effect.SetText("Effect :\n Run faster");
-            Level.SetText("Level : 1");
+            Level.SetText("Level : " + data.getLevel("speed"));
         }
         if (EventSystem.current.currentSelectedGameObject == HigherButton)
         {
-            Cost.SetText("Cost :\n 1");
+            Cost.SetText("Cost :\n" + data.getCost("jump"));
             Effect.SetText("Effect :\n Jump Higher");
-            Level.SetText("Level : 1");
+            Level.SetText("Level : " + data.getLevel("jump"));
         }
         if (EventSystem.current.currentSelectedGameObject == ExtraJumpButton)
         {
-            Cost.SetText("Cost :\n 1");
+            Cost.SetText("Cost :\n" + data.getCost("extraJump")) ;
             Effect.SetText("Effect :\n New jump");
-            Level.SetText("Level : 1");
+            Level.SetText("Level : " + data.getLevel("extraJump"));
         }
         if (EventSystem.current.currentSelectedGameObject == RepairButton)
         {
@@ -46,9 +51,47 @@ public class ScreenUI : MonoBehaviour
         }
         if (EventSystem.current.currentSelectedGameObject == UpgradeIceButton)
         {
-            Cost.SetText("Cost :\n 1");
+            Cost.SetText("Cost :\n" + data.getCost("ice"));
             Effect.SetText("Effect :\n Gather more\n ice");
-            Level.SetText("Level : 1");
+            Level.SetText("Level :" + data.getLevel("ice"));
+        }
+    }
+
+    public void buySpeed()
+    {
+        if(playerManager.getMetalScrap() > data.getCost("speed"))
+        {
+            Debug.Log("Bough speed");
+            playerManager.setMetalScrap(playerManager.getMetalScrap() - data.getCost("speed"));
+            data.levelUp("speed");
+        }
+        Debug.Log("Can't buy");
+    }
+
+    public void buyIce()
+    {
+        if (playerManager.getMetalScrap() > data.getCost("ice"))
+        {
+            playerManager.setMetalScrap(playerManager.getMetalScrap() - data.getCost("ice"));
+            data.levelUp("ice");
+        }
+    }
+
+    public void buyJump()
+    {
+        if (playerManager.getMetalScrap() > data.getCost("jump"))
+        {
+            playerManager.setMetalScrap(playerManager.getMetalScrap() - data.getCost("jump"));
+            data.levelUp("jump");
+        }
+    }
+
+    public void buyExtraJump()
+    {
+        if (playerManager.getMetalScrap() > data.getCost("extraJump"))
+        {
+            playerManager.setMetalScrap(playerManager.getMetalScrap() - data.getCost("extraJump"));
+            data.levelUp("extraJump");
         }
     }
 }

@@ -21,7 +21,8 @@ public class Movement : MonoBehaviour
 
     bool inIceStation = false;
     bool inRocket = false;
-
+    bool inRocketMenu = false;
+    Rocket rocket;
     void Start(){
         groundMask = LayerMask.GetMask("Planet", "Platform");
         isAlive = true;
@@ -43,6 +44,16 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown("e") && inIceStation)
         {
             Manager.playerSellIce();
+        }
+        if (Input.GetKeyDown("e") && inRocket && !inRocketMenu)
+        {
+            rocket.ActivateMenu(true);
+            inRocketMenu = true;
+        }
+        else if (Input.GetKeyDown("e") && inRocket && inRocketMenu)
+        {
+            rocket.ActivateMenu(false);
+            inRocketMenu = false;
         }
 
     }
@@ -72,10 +83,24 @@ public class Movement : MonoBehaviour
             collision.gameObject.GetComponent<IceStation>().setActiveDialogue(true);
             inIceStation = true;
         }
-    }
 
+        if (collision.gameObject.tag == "Rocket")
+        {
+            rocket = collision.GetComponent<Rocket>();
+            rocket.setActiveDialogue(true);
+            inRocket = true;
+        }
+    }
+        
     void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "Rocket")
+        {
+            rocket.ActivateMenu(false);
+            rocket.setActiveDialogue(false);
+            inRocket = false;
+        }
+
         if (collision.gameObject.tag == "IceStation")
         {
             collision.gameObject.GetComponent<IceStation>().setActiveDialogue(false);

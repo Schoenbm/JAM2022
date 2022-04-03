@@ -16,10 +16,10 @@ public class PlayerManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject planet;
     Vector3 position;
-    GameObject player;
+    public GameObject player;
     public Planet myPlanet;
     public GameManager gameManager;
-
+    PlayerData playerData;
     public bool invulnerable;
 
     public Canvas HUD;
@@ -28,6 +28,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
+        playerData = this.gameObject.GetComponent<PlayerData>();
         invulnerable = false;
         player = Instantiate(playerPrefab, new Vector3(0,31,0), Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
@@ -75,6 +76,15 @@ public class PlayerManager : MonoBehaviour
         iceCount = 0;
     }
     
+    public int getMetalScrap()
+    {
+        return metalScrapCount;
+    }
+
+    public void setMetalScrap(int newCount)
+    {
+        metalScrapCount = newCount;
+    }
 
     IEnumerator RespawnPlayer(){
         invulnerable = true;
@@ -85,6 +95,9 @@ public class PlayerManager : MonoBehaviour
         player = Instantiate(playerPrefab, position, Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
         player.GetComponent<Movement>().Manager = this;
+        player.GetComponent<Movement>().speed = playerData.getValue("speed");
+        player.GetComponent<Movement>().jumpHeight = playerData.getValue("jump");
+        player.GetComponent<Movement>().maxExtraJump = playerData.getValue("extraJump");
         cineCamera.m_Follow =player.GetComponent<Movement>().cameraTracker.transform;
         yield return new WaitForSeconds(3f);
         invulnerable = false;

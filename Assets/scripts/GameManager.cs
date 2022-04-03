@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public float lifeSpanScrap;
     public int amount = 3;
     int amountIce = 0;
-    int amountScrap = 0;
+    int amountScrap = 1000;
 
     public bool gameOver;
     bool gamePause;

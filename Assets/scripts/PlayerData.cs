@@ -25,16 +25,17 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
-        playerMovement = this.gameObject.GetComponent<Movement>();
+
         playerManager = this.gameObject.GetComponent<PlayerManager>();
-        levelSpeed = 1;
-        levelJump = 1;
-        levelIce = 1;
-        levelExtraJump = 1;
-        playerManager.iceValue = ice[1];
-        playerMovement.speed = speed[1];
-        playerMovement.maxExtraJump = extraJump[1];
-        playerMovement.jumpHeight = jump[1];
+        playerMovement = playerManager.player.GetComponent<Movement>();
+        levelSpeed = 0;
+        levelJump = 0;
+        levelIce = 0;
+        levelExtraJump = 0;
+        playerManager.iceValue = ice[0];
+        playerMovement.speed = speed[0];
+        playerMovement.maxExtraJump = extraJump[0];
+        playerMovement.jumpHeight = jump[0];
     }
     public int getCost(string category)
     {
@@ -45,7 +46,7 @@ public class PlayerData : MonoBehaviour
             case "jump":
                 return costJump[levelJump];
             case "extraJump":
-                return extraJump[levelExtraJump];
+                return costExtraJump[levelExtraJump];
             case "ice":
                 return costIce[levelIce];
             default: return -1;
@@ -83,23 +84,41 @@ public class PlayerData : MonoBehaviour
         switch (category)
         {
             case "speed":
-                if (levelSpeed == speed.Count)
+                if (levelSpeed == speed.Count -1)
                     return "max";
                 return levelSpeed.ToString();
             case "jump":
-                if (levelJump == jump.Count)
+                if (levelJump == jump.Count -1)
                     return "max";
                 return levelJump.ToString();
             case "extraJump":
-                if (levelExtraJump == extraJump.Count)
+                if (levelExtraJump == extraJump.Count-1)
                     return "max";
                 return levelExtraJump.ToString();
             case "ice":
-                if (levelIce == ice.Count)
+                if (levelIce == ice.Count-1)
                     return "max";
                 return levelIce.ToString();
             default:
                 return "no level";
+        }
+    }
+
+
+    public int getValue(string category)
+    {
+        switch (category)
+        {
+            case "speed":
+                return speed[levelSpeed];
+            case "jump":
+                return jump[levelJump];
+            case "extraJump":
+                return extraJump[levelExtraJump];
+            case "ice":
+                return ice[levelIce];
+            default:
+                return -1;
         }
     }
 }
