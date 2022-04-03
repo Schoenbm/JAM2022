@@ -32,7 +32,6 @@ public class MeteorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(myPlanet.health/myPlanet.maxHealth);
         amount = Mathf.Max(minAmount, maxAmount - Mathf.FloorToInt(maxAmount*(myPlanet.health/myPlanet.maxHealth)));
         if(amount > maxAmount){
             amount = maxAmount;

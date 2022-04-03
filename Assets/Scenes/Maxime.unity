@@ -264,6 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227c61da2f8ed3f41832d111ec15270d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  iceValue: 10
   cineCamera: {fileID: 1269115302}
   iceCount: 0
   playerPrefab: {fileID: 3417853700374901729, guid: 3a797e77a9143b247b11d9699b3c37c5, type: 3}
@@ -333,6 +334,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1293581221, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293581222, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_TagString
+      value: IceStation
+      objectReference: {fileID: 0}
     - target: {fileID: 3229884541577928414, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -381,21 +390,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: EarthCore
       objectReference: {fileID: 0}
-    - target: {fileID: 3229884542223975046, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_Layer
-      value: 3
+    - target: {fileID: 3229884541577928415, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
-    - target: {fileID: 3229884542223975065, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_Color.b
-      value: 0.5747152
-      objectReference: {fileID: 0}
-    - target: {fileID: 3229884542223975065, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_Color.g
-      value: 0.990566
-      objectReference: {fileID: 0}
-    - target: {fileID: 3229884542223975065, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_Color.r
-      value: 0.6421516
+    - target: {fileID: 6707418638394956365, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_Name
+      value: Text
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
