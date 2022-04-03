@@ -42,12 +42,18 @@ public class GameManager : MonoBehaviour
         if(timeBeforeNextItemSpawn <= 0f){
             for(int i = 0; i < amount; i++){
                 timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
-                if(amountIce < maxEachItems)
-                    InstanciateIceItemRandom();
-                if(amountIce < maxEachItems)
-                    InstanciateScrapItemRandom();  
+                if(amountIce < maxEachItems){
+                    //InstanciateIceItemRandom();
+                    InstanciateIceItemPlatform(); 
+                }
+                    
+                if(amountIce < maxEachItems){
+                    //InstanciateScrapItemRandom();
+                    InstanciateScrapItemPlatform();
+                }
+                     
                 
-                //InstanciateIceItemPlatform();       
+                      
             }
             
         }
@@ -132,32 +138,29 @@ public class GameManager : MonoBehaviour
     void InstanciateIceItemPlatform(){
         GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
         Debug.Log(platforms.Length);
-        float angle = Mathf.Atan2(this.transform.position.normalized.y , this.transform.position.normalized.x);
+        float angle = Mathf.Atan2(earthCore.transform.position.normalized.y , earthCore.transform.position.normalized.x);
 
         int index = (int)Random.Range(0,platforms.Length-1);
-        Vector3 position = platforms[index].transform.GetChild(0).gameObject.transform.position;
-        //Quaternion rotation = platforms[index].transform.rotation;
-
+        Vector3 position = platforms[index].transform.position;
         GameObject ice = Instantiate(icePrefab, position, Quaternion.identity, earthCore.transform);
-        ice.transform.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg);
         ice.transform.parent = earthCore.transform;
-        ice.transform.position += new Vector3(0,1,0);
+        ice.transform.eulerAngles = new Vector3(0, 0, 0);        
+        ice.transform.position += position.normalized;
         amountIce++;
     }
 
     void InstanciateScrapItemPlatform(){
         GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
         Debug.Log(platforms.Length);
-        float angle = Mathf.Atan2(this.transform.position.normalized.y , this.transform.position.normalized.x);
+        float angle = Mathf.Atan2(earthCore.transform.position.normalized.y , earthCore.transform.position.normalized.x);
 
         int index = (int)Random.Range(0,platforms.Length-1);
-        Vector3 position = platforms[index].transform.GetChild(0).gameObject.transform.position;
-        //Quaternion rotation = platforms[index].transform.rotation;
+        Vector3 position = platforms[index].transform.position;
 
         GameObject scrap = Instantiate(scrapPrefab, position, Quaternion.identity, earthCore.transform);
-        scrap.transform.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg);
         scrap.transform.parent = earthCore.transform;
-        scrap.transform.position += new Vector3(0,1,0);
+        scrap.transform.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg);
+        scrap.transform.position += position.normalized;
         amountScrap++;
     }
 

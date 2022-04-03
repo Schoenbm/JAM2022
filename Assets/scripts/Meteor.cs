@@ -38,8 +38,9 @@ public class Meteor : MonoBehaviour
         if(collision.gameObject.tag == "Planet"){
             DestroyMeteor();
             float angle = Mathf.Atan2(this.transform.position.normalized.y , this.transform.position.normalized.x);
-            GameObject lava = Instantiate(lavaPrefab, this.transform.position - new Vector3(0,1,0), Quaternion.identity, this.gameObject.transform.parent.parent);;
+            GameObject lava = Instantiate(lavaPrefab, this.transform.position, Quaternion.identity, this.gameObject.transform.parent.parent);;
             lava.transform.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg - 90f);
+            lava.transform.position -= this.transform.position.normalized;
             Destroy(this.gameObject);
         }
     }
