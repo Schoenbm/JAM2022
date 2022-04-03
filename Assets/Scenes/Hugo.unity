@@ -264,12 +264,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227c61da2f8ed3f41832d111ec15270d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 796977570}
+  iceValue: 10
+  cineCamera: {fileID: 796977570}
   iceCount: 0
   playerPrefab: {fileID: 3417853700374901729, guid: 3a797e77a9143b247b11d9699b3c37c5, type: 3}
   planet: {fileID: 703291120}
   myPlanet: {fileID: 0}
   gameManager: {fileID: 639453175}
+  invulnerable: 0
 --- !u!4 &639453173
 Transform:
   m_ObjectHideFlags: 0
@@ -302,7 +304,10 @@ MonoBehaviour:
   parent: {fileID: 127958092}
   earthCore: {fileID: 0}
   timeBetweenMeteors: 2
+  maxTimeBetweenMeteors: 0
+  minTimeBetweenMeteors: 0
   maxAmount: 0
+  minAmount: 0
   myPlanet: {fileID: 127958094}
 --- !u!114 &639453175
 MonoBehaviour:

@@ -6,10 +6,12 @@ using UnityEditor;
 public class Platform : MonoBehaviour
 {
 
-    public bool isCorrect;  
+    public bool isCorrect;
+    public bool hasItem;
     Vector2 size;  
     void Awake(){
         isCorrect = true;
+        hasItem = false;
         LayerMask mask = LayerMask.GetMask("Platform");
         Vector2 size = new Vector2(6,10);
         Matrix4x4 mat = this.transform.localToWorldMatrix;

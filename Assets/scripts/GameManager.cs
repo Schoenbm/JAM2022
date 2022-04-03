@@ -11,9 +11,11 @@ public class GameManager : MonoBehaviour
     public GameObject earthCore;
 
     public float timeBetweenItemsSpawn = 3f;
-    float timeBeforeNextItemSpawn = 0f;
-    public int amount = 3;
+    float timeBeforeNextItemSpawn;
 
+    public float lifeSpanIce;
+    public float lifeSpanScrap;
+    public int amount = 3;
     int maxEachItems = 20;
     int amountIce = 0;
     int amountScrap = 0;
@@ -23,7 +25,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        lifeSpanIce = 10f;
+        lifeSpanScrap = 30f;
         gameOver = false;
+        timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
         for(int i =0; i< 20; i++){
             InstanciateLayer1Platform(32.5f, 35) ;
         }
@@ -100,6 +105,7 @@ public class GameManager : MonoBehaviour
         GameObject ice = Instantiate(icePrefab, position, Quaternion.identity);
         ice.transform.parent = earthCore.transform;
         ice.transform.eulerAngles = new Vector3(0,0,angle-90f);
+        ice.GetComponent<Collectible>().lifeSpan = lifeSpanIce;
         amountIce++;
     }
 
@@ -112,6 +118,7 @@ public class GameManager : MonoBehaviour
         GameObject scrap = Instantiate(scrapPrefab, position, Quaternion.identity);
         scrap.transform.parent = earthCore.transform;
         scrap.transform.eulerAngles = new Vector3(0,0,angle-90f);
+        scrap.GetComponent<Collectible>().lifeSpan = lifeSpanScrap;
         amountScrap++;
     }
 
@@ -120,6 +127,10 @@ public class GameManager : MonoBehaviour
         float angle = Mathf.Atan2(earthCore.transform.position.normalized.y , earthCore.transform.position.normalized.x);
 
         int index = (int)Random.Range(0,platforms.Length-1);
+        while(platforms[index].GetComponent<Platform>().hasItem){
+            index = (int)Random.Range(0,platforms.Length-1);
+        }
+        platforms[index].GetComponent<Platform>().hasItem = true;
         Vector3 position = platforms[index].transform.position;
         Vector3 rotation = platforms[index].transform.rotation.eulerAngles;
 
@@ -127,6 +138,7 @@ public class GameManager : MonoBehaviour
         ice.transform.parent = earthCore.transform;
         ice.transform.eulerAngles = rotation;    
         ice.transform.position += position.normalized;
+        ice.GetComponent<Collectible>().lifeSpan = lifeSpanIce;
         amountIce++;
     }
 
@@ -135,6 +147,10 @@ public class GameManager : MonoBehaviour
         float angle = Mathf.Atan2(earthCore.transform.position.normalized.y , earthCore.transform.position.normalized.x);
 
         int index = (int)Random.Range(0,platforms.Length-1);
+        while(platforms[index].GetComponent<Platform>().hasItem){
+            index = (int)Random.Range(0,platforms.Length-1);
+        }
+        platforms[index].GetComponent<Platform>().hasItem = true;
         Vector3 position = platforms[index].transform.position;
         Vector3 rotation = platforms[index].transform.rotation.eulerAngles;
 
@@ -142,6 +158,7 @@ public class GameManager : MonoBehaviour
         scrap.transform.parent = earthCore.transform;
         scrap.transform.eulerAngles = rotation;
         scrap.transform.position += position.normalized;
+        scrap.GetComponent<Collectible>().lifeSpan = lifeSpanScrap;
         amountScrap++;
     }
 
