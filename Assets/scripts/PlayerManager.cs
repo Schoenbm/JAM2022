@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerManager : MonoBehaviour
 {
 
     int lifes = 3;
-    
+
+    public CinemachineVirtualCamera camera;
     public int iceCount;
     int metalScrapCount;
     public GameObject playerPrefab;
@@ -22,8 +24,9 @@ public class PlayerManager : MonoBehaviour
         player = Instantiate(playerPrefab, new Vector3(0,31,0), Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
         player.GetComponent<Movement>().Manager = this;
+        camera.m_Follow =player.GetComponent<Movement>().cameraTracker.transform;
         Planet myPlanet = planet.GetComponent<Planet>();
-        
+
         iceCount = 0;
         metalScrapCount = 0;
     }

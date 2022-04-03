@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     public int maxExtraJump = 1;
     int extraJump = 1;
     public bool isAlive;
-
+    public GameObject cameraTracker;
     public PlayerManager Manager;
 
     void Start(){
