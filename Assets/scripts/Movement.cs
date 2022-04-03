@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     LayerMask groundMask;
     bool isGrounded = true;
     bool jump = false;
-    public int maxExtraJump = 1;
+    public int maxExtraJump = 0;
     int extraJump = 1;
     public bool isAlive;
     public GameObject cameraTracker;
