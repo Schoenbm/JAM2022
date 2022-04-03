@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MeteorManager : MonoBehaviour
 {
+    public GameManager gameManager;
     public GameObject MeteorPrefab;
     public GameObject parent;
     
@@ -14,7 +15,7 @@ public class MeteorManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeBeforeNextMeteor <= 0f){
+        if(!gameManager.gameOver && timeBeforeNextMeteor <= 0f){
             for(int i = 0; i < amount; i++){
                 timeBeforeNextMeteor = timeBetweenMeteors;
                 int angle = (int)Random.Range(0f,359f);

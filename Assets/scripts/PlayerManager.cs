@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour
     Vector3 position;
 
     GameObject player;
+
+    public GameManager gameManager;
     
 
     // Start is called before the first frame update
@@ -68,7 +70,6 @@ public class PlayerManager : MonoBehaviour
     }
 
     void EndGame(){
-        Destroy(player);
-        //Move this function elsewhere
+        gameManager.EndGame();
     }
 }
