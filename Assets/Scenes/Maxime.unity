@@ -128,6 +128,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3229884542223975046, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
   m_PrefabInstance: {fileID: 703291119}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &127958098 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7710279538624980559, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+  m_PrefabInstance: {fileID: 703291119}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 127958092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44e08e8aadbfda45b58c9db058ffc21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &561751327
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,12 +264,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227c61da2f8ed3f41832d111ec15270d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1269115302}
+  cineCamera: {fileID: 1269115302}
   iceCount: 0
   playerPrefab: {fileID: 3417853700374901729, guid: 3a797e77a9143b247b11d9699b3c37c5, type: 3}
   planet: {fileID: 703291120}
-  myPlanet: {fileID: 0}
-  gameManager: {fileID: 0}
+  myPlanet: {fileID: 127958098}
+  gameManager: {fileID: 639453175}
 --- !u!4 &639453173
 Transform:
   m_ObjectHideFlags: 0
@@ -286,10 +297,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e7de1f203c1dd42af5ee3828978fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 639453175}
   MeteorPrefab: {fileID: 8271997421859587314, guid: 2fb10e6bf44362a4c83d638cdfb8aafb, type: 3}
   parent: {fileID: 127958092}
+  earthCore: {fileID: 703291120}
   timeBetweenMeteors: 2
+  maxTimeBetweenMeteors: 0
+  minTimeBetweenMeteors: 0
+  maxAmount: 0
+  minAmount: 0
+  myPlanet: {fileID: 127958098}
 --- !u!114 &639453175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,8 +451,8 @@ Camera:
   m_GameObject: {fileID: 1699145039}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.4745098, g: 0.26900515, b: 0.19215688, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -476,7 +493,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699145039}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.078298, y: -20.645288, z: -90.89856}
+  m_LocalPosition: {x: 7.078298, y: 22.1, z: -90.89856}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -534,7 +551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7991486573012034316, guid: 9be51695a77ba5248897e8c75b6fd199, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20.645288
+      value: 22.1
       objectReference: {fileID: 0}
     - target: {fileID: 7991486573012034316, guid: 9be51695a77ba5248897e8c75b6fd199, type: 3}
       propertyPath: m_LocalPosition.z
@@ -567,6 +584,10 @@ PrefabInstance:
     - target: {fileID: 7991486573012034316, guid: 9be51695a77ba5248897e8c75b6fd199, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7991486573012034317, guid: 9be51695a77ba5248897e8c75b6fd199, type: 3}
+      propertyPath: m_Lens.m_SensorSize.x
+      value: 2.1213872
       objectReference: {fileID: 0}
     - target: {fileID: 7991486573012034318, guid: 9be51695a77ba5248897e8c75b6fd199, type: 3}
       propertyPath: m_Name
