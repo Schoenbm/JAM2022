@@ -269,7 +269,7 @@ MonoBehaviour:
   iceCount: 0
   playerPrefab: {fileID: 3417853700374901729, guid: 3a797e77a9143b247b11d9699b3c37c5, type: 3}
   planet: {fileID: 703291120}
-  myPlanet: {fileID: 0}
+  myPlanet: {fileID: 127958094}
   gameManager: {fileID: 639453175}
   invulnerable: 0
 --- !u!4 &639453173

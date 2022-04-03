@@ -50,3 +50,6 @@ TagManager:
   - name: Collectables
     uniqueID: 2718931775
     locked: 0
+  - name: Planet
+    uniqueID: 1934105127
+    locked: 0

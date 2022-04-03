@@ -47,7 +47,8 @@ public class MeteorManager : MonoBehaviour
                 float posY = Mathf.Sin(angle);
                 Vector3 position = 70 * new Vector3(posX,posY,0);
                 GameObject meteor = Instantiate(MeteorPrefab, position, Quaternion.identity) as GameObject;
-                meteor.transform.parent = parent.transform;                
+                meteor.transform.parent = parent.transform;
+                meteor.GetComponent<Meteor>().gameManager = gameManager;
             }
             
         }
