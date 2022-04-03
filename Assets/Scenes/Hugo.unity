@@ -269,7 +269,7 @@ MonoBehaviour:
   iceCount: 0
   playerPrefab: {fileID: 3417853700374901729, guid: 3a797e77a9143b247b11d9699b3c37c5, type: 3}
   planet: {fileID: 703291120}
-  myPlanet: {fileID: 0}
+  myPlanet: {fileID: 127958094}
   gameManager: {fileID: 639453175}
   invulnerable: 0
 --- !u!4 &639453173
@@ -348,6 +348,10 @@ PrefabInstance:
     - target: {fileID: 1293581221, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293581222, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_TagString
+      value: IceStation
       objectReference: {fileID: 0}
     - target: {fileID: 3229884541577928414, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_RootOrder

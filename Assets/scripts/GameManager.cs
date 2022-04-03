@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject scrapPrefab;
     public GameObject earthCore;
 
+    public CinemachineVirtualCamera CMcamera;
+
     public float timeBetweenItemsSpawn = 3f;
     float timeBeforeNextItemSpawn;
 
@@ -59,12 +61,13 @@ public class GameManager : MonoBehaviour
     void FixedUpdate(){
         if(!gameOver && timeBeforeNextItemSpawn <= 0f){
             timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
-            for(int i = 0; i < amount; i++){                
-                    //InstanciateIceItemRandom();
-                    InstanciateIceItemPlatform(); 
-                    //InstanciateScrapItemRandom();
-                    InstanciateScrapItemPlatform();
-            }            
+            for(int i = 0; i < amount; i++){
+                InstanciateScrapItemPlatform();
+            }
+            for(int i =0; i < (int)amount/3; i++){
+                InstanciateIceItemPlatform(); 
+
+            }
         }
         timeBeforeNextItemSpawn -= Time.deltaTime;
     }
@@ -117,7 +120,7 @@ public class GameManager : MonoBehaviour
         float angle = Mathf.Atan2(earthCore.transform.position.normalized.y , earthCore.transform.position.normalized.x);
 
         int index = (int)Random.Range(0,platforms.Length-1);
-        while(platforms[index].GetComponent<Platform>().hasItem){
+        while(platforms[index].GetComponent<Platform>().hasItem || platforms[index].transform.position.y < 40){
             index = (int)Random.Range(0,platforms.Length-1);
         }
         platforms[index].GetComponent<Platform>().hasItem = true;
@@ -153,6 +156,10 @@ public class GameManager : MonoBehaviour
         scrap.GetComponent<Collectible>().platform = platforms[index].GetComponent<Platform>();
         amountScrap++;
     }
+
+    public void CameraShake(){
+    }
+
 
     public void EndGame(){
         gameOver = true;

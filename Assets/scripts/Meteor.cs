@@ -9,11 +9,17 @@ public class Meteor : MonoBehaviour
     float speed = 4f;
     float rotSpeed = 20f;
     public GameObject lavaPrefab;
+    ParticleSystem Trail;
+    ParticleSystem Explosion;
+
+    public GameManager gameManager;
 
     void Start(){
         speed = Random.Range(4f, 7f);
         rb = this.GetComponent<Rigidbody2D>();
         transform.eulerAngles = new Vector3(0, 0, Random.Range(0, 360));
+        Trail = this.transform.GetChild(0).GetComponent<ParticleSystem>();
+        Explosion = this.transform.GetChild(1).GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -36,16 +42,21 @@ public class Meteor : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.tag == "Planet"){
-            DestroyMeteor();
             float angle = Mathf.Atan2(this.transform.position.normalized.y , this.transform.position.normalized.x);
             GameObject lava = Instantiate(lavaPrefab, this.transform.position, Quaternion.identity, this.gameObject.transform.parent.parent);;
             lava.transform.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg - 90f);
             lava.transform.position -= this.transform.position.normalized;
-            Destroy(this.gameObject);
+            StartCoroutine(DestroyMeteor());
         }
     }
     
-    void DestroyMeteor(){
-
+    IEnumerator DestroyMeteor(){
+        Explosion.Play();
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        gameManager.CameraShake();
+        Trail.Stop();
+        Debug.Log("Boom");
+        yield return new WaitForSeconds(2f);
+        Destroy(this.gameObject);
     }
 }
