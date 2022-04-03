@@ -122,9 +122,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0071057705, y: -0.13187851}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.4465013
 --- !u!114 &406200569848280532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af28d87e1957b5740b1e01a7079ea402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lavaPrefab: {fileID: 592114253732771372, guid: 70a04e49b25367a46bd8575ae67561bf, type: 3}
 --- !u!1 &8271997422163261817
 GameObject:
   m_ObjectHideFlags: 0

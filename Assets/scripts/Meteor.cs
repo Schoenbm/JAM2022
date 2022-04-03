@@ -7,9 +7,13 @@ public class Meteor : MonoBehaviour
 
     Rigidbody2D rb;
     float speed = 4f;
+    float rotSpeed = 20f;
+    public GameObject lavaPrefab;
 
     void Start(){
+        speed = Random.Range(4f, 7f);
         rb = this.GetComponent<Rigidbody2D>();
+        transform.eulerAngles = new Vector3(0, 0, Random.Range(0, 360));
     }
 
     // Update is called once per frame
@@ -24,12 +28,19 @@ public class Meteor : MonoBehaviour
         var velocity = ps.velocityOverLifetime;
         velocity.x = -10 * direction.x;
         velocity.y = -10 * direction.y;
+
+        Vector3 rotation = new Vector3(0, 0, rotSpeed * Time.deltaTime);
+        transform.eulerAngles += rotation;
     }
 
 
     void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.tag == "Planet"){
             DestroyMeteor();
+            float angle = Mathf.Atan2(this.transform.position.normalized.y , this.transform.position.normalized.x);
+            GameObject lava = Instantiate(lavaPrefab, this.transform.position, Quaternion.identity, this.gameObject.transform.parent.parent);;
+            lava.transform.eulerAngles = new Vector3(0, 0, angle * Mathf.Rad2Deg - 90f);
+            lava.transform.position -= this.transform.position.normalized;
             Destroy(this.gameObject);
         }
     }

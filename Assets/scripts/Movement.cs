@@ -7,7 +7,7 @@ public class Movement : MonoBehaviour
 
     public GameObject earth;
 
-    float jumpHeight = 1500f;
+    public float jumpHeight = 1500f;
 
     public float speed = 10f;
 
@@ -15,6 +15,8 @@ public class Movement : MonoBehaviour
     LayerMask groundMask;
     bool isGrounded = true;
     bool jump = false;
+    public int maxExtraJump = 1;
+    int extraJump = 1;
     public bool isAlive;
 
     public PlayerManager Manager;
@@ -23,14 +25,19 @@ public class Movement : MonoBehaviour
         groundMask = LayerMask.GetMask("Planet", "Platform");
         isAlive = true;
         rb = this.GetComponent<Rigidbody2D>();
+        extraJump = maxExtraJump;
     }
 
     void Update(){
-        rb.AddForce(Vector2.down * 0.1f);
-        if(Input.GetButtonDown("Jump") && !jump && isGrounded){
+        rb.AddForce(Vector2.down * 0.1f); 
+        
+        if (Input.GetButtonDown("Jump") && !jump && isGrounded){
             jump = true;
         }
-        
+        if (Input.GetButtonDown("Jump") && rb.velocity.y < 8f && !isGrounded && extraJump > 0)
+        {
+            jump = true;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision){
@@ -73,21 +80,28 @@ public class Movement : MonoBehaviour
         RaycastHit2D ray = Physics2D.Raycast(this.transform.position, Vector2.down,1.5f, groundMask);
         if (ray.collider)
         {
-            Debug.Log("grounded");
-            Debug.Log(ray.collider.transform.gameObject.tag);
             isGrounded = true;
         }
         else
         {
             isGrounded = false;
-            Debug.Log("not grounded");
         }
 
         Debug.DrawRay(this.transform.position, Vector2.down, Color.red, 1.2f);
 
-        if(jump && isGrounded){
+        if (jump && !isGrounded && extraJump > 0 && rb.velocity.y < 8f)
+        {
+            rb.AddForce(-40 * rb.velocity.y * Vector2.up);
             rb.AddForce(Vector2.up * jumpHeight);
             jump = false;
+            extraJump -= 1;
+        }
+
+        if (jump && isGrounded && rb.velocity.y < 2f)
+        {
+            rb.AddForce(Vector2.up * jumpHeight);
+            jump = false;
+            extraJump = maxExtraJump;
         }
     }
 }   

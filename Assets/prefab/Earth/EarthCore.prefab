@@ -45,7 +45,8 @@ GameObject:
   - component: {fileID: 3229884542223975067}
   - component: {fileID: 3229884542223975066}
   - component: {fileID: 3229884542223975069}
-  m_Layer: 0
+  - component: {fileID: 7710279538624980559}
+  m_Layer: 3
   m_Name: Earth
   m_TagString: Planet
   m_Icon: {fileID: 0}
@@ -203,3 +204,16 @@ PolygonCollider2D:
       - {x: 0.23371302, y: 0.43437672}
       - {x: 0.20331192, y: 0.44829124}
       - {x: 0.15234375, y: 0.47265625}
+--- !u!114 &7710279538624980559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3229884542223975046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d44e08e8aadbfda45b58c9db058ffc21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}

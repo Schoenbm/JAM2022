@@ -11,8 +11,9 @@ public class Platform : MonoBehaviour
     void Awake(){
         isCorrect = true;
         LayerMask mask = LayerMask.GetMask("Platform");
-        Vector2 size = 2*transform.localScale;
-        Collider2D[] colliders = Physics2D.OverlapBoxAll(transform.position, size, transform.rotation.z, mask);
+        Vector2 size = new Vector2(6,10);
+        Matrix4x4 mat = this.transform.localToWorldMatrix;
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(mat.GetPosition(), size, mat.rotation.z, mask);
         if(colliders.Length > 1){
             isCorrect = false;
             Debug.Log("collided");
@@ -20,8 +21,9 @@ public class Platform : MonoBehaviour
     }
 
     void OnDrawGizmos(){
+        Gizmos.matrix = this.transform.localToWorldMatrix;
         Gizmos.color = Color.black;
-        //Gizmos.DrawCube(transform.position, 2*transform.localScale);
+        Gizmos.DrawWireCube(Vector3.zero, new Vector3(2,4,1));
 
     }
 }

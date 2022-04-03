@@ -14,10 +14,9 @@ public class PlayerManager : MonoBehaviour
     Vector3 position;
 
     GameObject player;
-    public Planet myPlanet;
+
     
 
-    // Start is called before the first frame update
     void Start()
     {
         player = Instantiate(playerPrefab, new Vector3(0,31,0), Quaternion.identity) as GameObject;
@@ -65,17 +64,17 @@ public class PlayerManager : MonoBehaviour
         player = Instantiate(playerPrefab, position, Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
         player.GetComponent<Movement>().Manager = this;
+        //Add some invulnerability frames;
         yield return null;
     }
 
     Vector3 ClosestAvailablePosition(Vector3 position){
         Vector3 finalPos;
-        finalPos = position + new Vector3(-1,5,0);
+        finalPos = position + new Vector3(Random.Range(-1,1),32,0);
         return finalPos; 
     }
 
     void EndGame(){
-        Destroy(player);
-        //Move this function elsewhere
+        gameManager.EndGame();
     }
 }
