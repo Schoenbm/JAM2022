@@ -12,10 +12,10 @@ public class PlayerManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject planet;
     Vector3 position;
-
     GameObject player;
+    public Planet myPlanet;
+    public GameManager GameManager;
 
-    
 
     void Start()
     {
@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour
         player.GetComponent<Movement>().earth = planet;
         player.GetComponent<Movement>().Manager = this;
         Planet myPlanet = planet.GetComponent<Planet>();
+        
         iceCount = 0;
         metalScrapCount = 0;
     }
