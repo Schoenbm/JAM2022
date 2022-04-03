@@ -18,6 +18,10 @@ public class Movement : MonoBehaviour
     public GameObject cameraTracker;
     public PlayerManager Manager;
 
+
+    bool inIceStation = false;
+    bool inRocket = false;
+
     void Start(){
         groundMask = LayerMask.GetMask("Planet", "Platform");
         isAlive = true;
@@ -36,6 +40,11 @@ public class Movement : MonoBehaviour
             Debug.Log("Double jump");
             jump = true;
         }
+        if (Input.GetKeyDown("e") && inIceStation)
+        {
+            Manager.playerSellIce();
+        }
+
     }
 
     void OnTriggerEnter2D(Collider2D collision){
@@ -61,6 +70,7 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.tag == "IceStation")
         {
             collision.gameObject.GetComponent<IceStation>().setActiveDialogue(true);
+            inIceStation = true;
         }
     }
 
@@ -69,17 +79,8 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.tag == "IceStation")
         {
             collision.gameObject.GetComponent<IceStation>().setActiveDialogue(false);
+            inIceStation = false;
         }
-    }
-    void OnTriggerStay2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "IceStation")
-        {
-            if (Input.GetKeyDown("e"))
-            {
-                Manager.playerSellIce();
-            }
-        } 
     }
 
 
@@ -89,7 +90,7 @@ public class Movement : MonoBehaviour
             earth.transform.eulerAngles += rotation;
         }
         
-        RaycastHit2D ray = Physics2D.Raycast(this.transform.position, Vector2.down,1.5f, groundMask);
+        RaycastHit2D ray = Physics2D.Raycast(this.transform.position - new Vector3(0,1,0), Vector2.down,0.5f, groundMask);
         if (ray.collider)
         {
             extraJump = maxExtraJump;

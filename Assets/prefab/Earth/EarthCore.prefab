@@ -276,6 +276,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
+    - target: {fileID: 9021692142390591029, guid: 792b60a4edac3514fab574429617ff47, type: 3}
+      propertyPath: m_fontSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9021692142390591029, guid: 792b60a4edac3514fab574429617ff47, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 792b60a4edac3514fab574429617ff47, type: 3}
 --- !u!4 &1293581221 stripped
@@ -290,6 +298,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3229884541577928414}
     m_Modifications:
+    - target: {fileID: 4486519284006909546, guid: 8a3de667025ef4d7fb9496959a373bec, type: 3}
+      propertyPath: m_fontSize
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486519284006909546, guid: 8a3de667025ef4d7fb9496959a373bec, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 5520482628370732328, guid: 8a3de667025ef4d7fb9496959a373bec, type: 3}
       propertyPath: m_RootOrder
       value: 1
