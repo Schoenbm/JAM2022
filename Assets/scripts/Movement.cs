@@ -48,11 +48,13 @@ public class Movement : MonoBehaviour
         }
         if(collision.gameObject.tag == "Ice")
         {
+            collision.gameObject.GetComponent<Collectible>().platform.hasItem = false;
             Destroy(collision.gameObject);
             Manager.playerPickIce();
         }
         if(collision.gameObject.tag == "Scrap")
         {
+            collision.gameObject.GetComponent<Collectible>().platform.hasItem = false;
             Destroy(collision.gameObject);
             Manager.playerPickScrap();
         }

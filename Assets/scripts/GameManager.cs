@@ -58,14 +58,13 @@ public class GameManager : MonoBehaviour
 
     void FixedUpdate(){
         if(!gameOver && timeBeforeNextItemSpawn <= 0f){
-            for(int i = 0; i < amount; i++){
-                timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
+            timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
+            for(int i = 0; i < amount; i++){                
                     //InstanciateIceItemRandom();
                     InstanciateIceItemPlatform(); 
                     //InstanciateScrapItemRandom();
                     InstanciateScrapItemPlatform();
-            }
-            
+            }            
         }
         timeBeforeNextItemSpawn -= Time.deltaTime;
     }
@@ -130,6 +129,7 @@ public class GameManager : MonoBehaviour
         ice.transform.eulerAngles = rotation;    
         ice.transform.position += 2*position.normalized;
         ice.GetComponent<Collectible>().lifeSpan = lifeSpanIce;
+        ice.GetComponent<Collectible>().platform = platforms[index].GetComponent<Platform>();
         amountIce++;
     }
 
@@ -150,6 +150,7 @@ public class GameManager : MonoBehaviour
         scrap.transform.eulerAngles = rotation;
         scrap.transform.position += 2*position.normalized;
         scrap.GetComponent<Collectible>().lifeSpan = lifeSpanScrap;
+        scrap.GetComponent<Collectible>().platform = platforms[index].GetComponent<Platform>();
         amountScrap++;
     }
 
