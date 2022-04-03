@@ -40,8 +40,11 @@ public class Movement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision){
         if(collision.gameObject.tag == "Killable"){
-            isAlive = false;
-            Manager.playerDeath();
+            if(!Manager.invulnerable){
+                isAlive = false;
+                Manager.playerDeath();
+            }
+            
         }
         if(collision.gameObject.tag == "Ice")
         {

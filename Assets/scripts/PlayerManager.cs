@@ -19,9 +19,12 @@ public class PlayerManager : MonoBehaviour
     public Planet myPlanet;
     public GameManager gameManager;
 
+    public bool invulnerable;
+
 
     void Start()
     {
+        invulnerable = false;
         player = Instantiate(playerPrefab, new Vector3(0,31,0), Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
         player.GetComponent<Movement>().Manager = this;
@@ -32,7 +35,13 @@ public class PlayerManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update(){      
+    void FixedUpdate(){
+        if(invulnerable){
+            player.GetComponent<SpriteRenderer>().color = Color.blue;
+        }
+        else{
+            player.GetComponent<SpriteRenderer>().color = Color.white;
+        }
     }
 
     public void playerDeath(){
@@ -60,15 +69,17 @@ public class PlayerManager : MonoBehaviour
     
 
     IEnumerator RespawnPlayer(){
+        invulnerable = true;
         Debug.Log("Respawn player");
         position = ClosestAvailablePosition(transform.position);
         Destroy(player);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         player = Instantiate(playerPrefab, position, Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
         player.GetComponent<Movement>().Manager = this;
         cineCamera.m_Follow =player.GetComponent<Movement>().cameraTracker.transform;
-        //Add some invulnerability frames;
+        yield return new WaitForSeconds(3f);
+        invulnerable = false;
         yield return null;
     }
 
