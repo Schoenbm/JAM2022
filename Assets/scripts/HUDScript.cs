@@ -16,7 +16,7 @@ public class HUDScript : MonoBehaviour
         iceNumberText.text = "Ice: " + 0;
         if (_playerManager == null )
         {
-            Debug.LogError(_playerManager.iceCount);
+            Debug.LogError("player manager not found");
         }
     }
 

@@ -14,17 +14,19 @@ public class PlayerManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject planet;
     Vector3 position;
-
     GameObject player;
-    
+    public Planet myPlanet;
+    public GameManager GameManager;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         player = Instantiate(playerPrefab, new Vector3(0,31,0), Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
         player.GetComponent<Movement>().Manager = this;
         camera.m_Follow =player.GetComponent<Movement>().cameraTracker.transform;
+        Planet myPlanet = planet.GetComponent<Planet>();
+
         iceCount = 0;
         metalScrapCount = 0;
     }
@@ -50,6 +52,12 @@ public class PlayerManager : MonoBehaviour
     public void playerPickScrap(){
         metalScrapCount += 1;
     }
+
+    public void playerSellIce()
+    {
+        myPlanet.plusHealth(iceCount);
+        iceCount = 0;
+    }
     
 
     IEnumerator RespawnPlayer(){
@@ -71,7 +79,6 @@ public class PlayerManager : MonoBehaviour
     }
 
     void EndGame(){
-        Destroy(player);
-        //Move this function elsewhere
+        gameManager.EndGame();
     }
 }

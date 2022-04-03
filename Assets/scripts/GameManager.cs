@@ -18,9 +18,12 @@ public class GameManager : MonoBehaviour
     int amountIce = 0;
     int amountScrap = 0;
 
+    public bool gameOver;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameOver = false;
         for(int i =0; i< 20; i++){
             InstanciateLayer1Platform(32.5f, 35) ;
         }
@@ -38,7 +41,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = 0; i < 20; i++)
         {
-                InstanciateLayer1Platform(54, 60);
+            InstanciateLayer1Platform(54, 60);
         }
 
     }
@@ -50,7 +53,7 @@ public class GameManager : MonoBehaviour
     }
 
     void FixedUpdate(){
-        if(timeBeforeNextItemSpawn <= 0f){
+        if(!gameOver && timeBeforeNextItemSpawn <= 0f){
             for(int i = 0; i < amount; i++){
                 timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
                 if(amountIce < maxEachItems){
@@ -114,7 +117,6 @@ public class GameManager : MonoBehaviour
 
     void InstanciateIceItemPlatform(){
         GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
-        Debug.Log(platforms.Length);
         float angle = Mathf.Atan2(earthCore.transform.position.normalized.y , earthCore.transform.position.normalized.x);
 
         int index = (int)Random.Range(0,platforms.Length-1);
@@ -130,7 +132,6 @@ public class GameManager : MonoBehaviour
 
     void InstanciateScrapItemPlatform(){
         GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
-        Debug.Log(platforms.Length);
         float angle = Mathf.Atan2(earthCore.transform.position.normalized.y , earthCore.transform.position.normalized.x);
 
         int index = (int)Random.Range(0,platforms.Length-1);
@@ -144,6 +145,21 @@ public class GameManager : MonoBehaviour
         amountScrap++;
     }
 
-
+    public void EndGame(){
+        gameOver = true;
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
+        GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
+        foreach(GameObject go in platforms){
+            Destroy(go);
+        }
+        GameObject[] iceItems = GameObject.FindGameObjectsWithTag("Ice");
+        foreach(GameObject go in iceItems){
+            Destroy(go);
+        }
+        GameObject[] scrapItems = GameObject.FindGameObjectsWithTag("Scrap");
+        foreach(GameObject go in scrapItems){
+            Destroy(go);
+        }
+    }
 
 }
