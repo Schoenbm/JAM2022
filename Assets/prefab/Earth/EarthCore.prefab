@@ -228,13 +228,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3229884541577928414}
     m_Modifications:
-    - target: {fileID: 91859209451924270, guid: 792b60a4edac3514fab574429617ff47, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
+    - target: {fileID: 3909428053813948774, guid: 792b60a4edac3514fab574429617ff47, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 10.9735
       objectReference: {fileID: 0}
-    - target: {fileID: 3162275837202895798, guid: 792b60a4edac3514fab574429617ff47, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
+    - target: {fileID: 3909428053813948774, guid: 792b60a4edac3514fab574429617ff47, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2.9119
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909428053813948774, guid: 792b60a4edac3514fab574429617ff47, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909428053813948774, guid: 792b60a4edac3514fab574429617ff47, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 3909428053813948774, guid: 792b60a4edac3514fab574429617ff47, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.87
       objectReference: {fileID: 0}
     - target: {fileID: 4045166011490604612, guid: 792b60a4edac3514fab574429617ff47, type: 3}
       propertyPath: m_RootOrder
@@ -280,27 +292,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -21.44
       objectReference: {fileID: 0}
+    - target: {fileID: 4045166011490604613, guid: 792b60a4edac3514fab574429617ff47, type: 3}
+      propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 8556828308845627894}
     - target: {fileID: 4045166011490604615, guid: 792b60a4edac3514fab574429617ff47, type: 3}
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
-    - target: {fileID: 4944197139834666647, guid: 792b60a4edac3514fab574429617ff47, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
+    - target: {fileID: 9021692142390591029, guid: 792b60a4edac3514fab574429617ff47, type: 3}
+      propertyPath: m_fontSize
+      value: 14
       objectReference: {fileID: 0}
-    - target: {fileID: 6117018659415730485, guid: 792b60a4edac3514fab574429617ff47, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7570067199984796474, guid: 792b60a4edac3514fab574429617ff47, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
+    - target: {fileID: 9021692142390591029, guid: 792b60a4edac3514fab574429617ff47, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 792b60a4edac3514fab574429617ff47, type: 3}
 --- !u!4 &1293581221 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4045166011490604612, guid: 792b60a4edac3514fab574429617ff47, type: 3}
+  m_PrefabInstance: {fileID: 4045166012649958881}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8556828308845627894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5664586104020132887, guid: 792b60a4edac3514fab574429617ff47, type: 3}
   m_PrefabInstance: {fileID: 4045166012649958881}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5520482627855301361
@@ -310,6 +327,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3229884541577928414}
     m_Modifications:
+    - target: {fileID: 4486519284006909546, guid: 8a3de667025ef4d7fb9496959a373bec, type: 3}
+      propertyPath: m_text
+      value: Press "E" to cool the planet with your ice shards
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486519284006909546, guid: 8a3de667025ef4d7fb9496959a373bec, type: 3}
+      propertyPath: m_fontSize
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486519284006909546, guid: 8a3de667025ef4d7fb9496959a373bec, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4486519284006909546, guid: 8a3de667025ef4d7fb9496959a373bec, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5520482628370732328, guid: 8a3de667025ef4d7fb9496959a373bec, type: 3}
       propertyPath: m_RootOrder
       value: 1
