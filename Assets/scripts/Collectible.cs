@@ -7,7 +7,9 @@ public class Collectible : MonoBehaviour
     public float lifeSpan;
     float timeToDespawn;
 
-    public GameManager gameManager;
+    GameManager gameManager;
+
+    public Platform platform;
     void Start()
     {
         timeToDespawn = lifeSpan;
@@ -18,6 +20,7 @@ public class Collectible : MonoBehaviour
     {
         if(timeToDespawn <= 0){
             timeToDespawn = lifeSpan;
+            platform.hasItem = false;
             Destroy(this.gameObject);
         }
         timeToDespawn -= Time.deltaTime;
