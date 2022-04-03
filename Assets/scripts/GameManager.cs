@@ -21,15 +21,25 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         for(int i =0; i< 20; i++){
-            InstanciateLayer1Platform();
+            InstanciateLayer1Platform(32.5f, 35) ;
         }
         for(int i =0; i< 10; i++){
-            InstanciateLayer2Platform();
+            InstanciateLayer1Platform(36.5f, 38);
         }
-        for(int i =0; i< 10; i++){
-            InstanciateLayer3Platform();
+        for (int i = 0; i < 10; i++)
+        {
+            InstanciateLayer1Platform(38.5f, 42);
         }
-        
+        for (int i = 0; i < 20; i++)
+        {
+            InstanciateLayer1Platform(45, 50);
+        }
+
+        for (int i = 0; i < 20; i++)
+        {
+                InstanciateLayer1Platform(54, 60);
+        }
+
     }
 
     // Update is called once per frame
@@ -60,11 +70,11 @@ public class GameManager : MonoBehaviour
         timeBeforeNextItemSpawn -= Time.deltaTime;
     }
 
-    void InstanciateLayer1Platform(){
+    void InstanciateLayer1Platform(float min, float max){
         int angle = (int)Random.Range(0f,359f);
         float posX = Mathf.Cos(angle * Mathf.Deg2Rad);
         float posY = Mathf.Sin(angle * Mathf.Deg2Rad);
-        float height = Random.Range(32.5f,34);
+        float height = Random.Range(min,max);
         Vector3 position = height * new Vector3(posX,posY,0);
         GameObject platform = Instantiate(platformPrefab, position, Quaternion.identity) as GameObject;
         platform.transform.eulerAngles = new Vector3(0,0,angle - 90);
@@ -73,41 +83,7 @@ public class GameManager : MonoBehaviour
         if(!platform.GetComponent<Platform>().isCorrect){
             Destroy(platform.gameObject);
             Debug.Log("Error platform L1");
-            //InstanciateLayer1Platform();
-        }
-    }
-
-    void InstanciateLayer2Platform(){
-        int angle = (int)Random.Range(0f,359f);
-        float posX = Mathf.Cos(angle * Mathf.Deg2Rad);
-        float posY = Mathf.Sin(angle * Mathf.Deg2Rad);
-        float height = Random.Range(36.5f,38);
-        Vector3 position = height * new Vector3(posX,posY,0);
-        GameObject platform = Instantiate(platformPrefab, position, Quaternion.identity) as GameObject;
-        platform.transform.eulerAngles = new Vector3(0,0,angle - 90);
-        platform.transform.parent = earthCore.transform;
-
-        if(!platform.GetComponent<Platform>().isCorrect){
-            Destroy(platform.gameObject);
-            Debug.Log("Error platform L2");
-            InstanciateLayer2Platform();
-        }
-    }
-
-    void InstanciateLayer3Platform(){
-        int angle = (int)Random.Range(0f,359f);
-        float posX = Mathf.Cos(angle * Mathf.Deg2Rad);
-        float posY = Mathf.Sin(angle * Mathf.Deg2Rad);
-        float height = Random.Range(38.5f,42);
-        Vector3 position = height * new Vector3(posX,posY,0);
-        GameObject platform = Instantiate(platformPrefab, position, Quaternion.identity) as GameObject;
-        platform.transform.eulerAngles = new Vector3(0,0,angle - 90);
-        platform.transform.parent = earthCore.transform;
-
-        if(!platform.GetComponent<Platform>().isCorrect){
-            Destroy(platform.gameObject);
-            Debug.Log("Error platform L3");
-            InstanciateLayer3Platform();
+            InstanciateLayer1Platform(min, max);
         }
     }
 
