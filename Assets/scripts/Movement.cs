@@ -34,8 +34,9 @@ public class Movement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && !jump && isGrounded){
             jump = true;
         }
-        if (Input.GetButtonDown("Jump") && rb.velocity.y < 8f && !isGrounded && extraJump > 0)
+        else if (Input.GetButtonDown("Jump") && rb.velocity.y < 15f && extraJump > 0)
         {
+            Debug.Log("Double jump");
             jump = true;
         }
     }
@@ -80,6 +81,7 @@ public class Movement : MonoBehaviour
         RaycastHit2D ray = Physics2D.Raycast(this.transform.position, Vector2.down,1.5f, groundMask);
         if (ray.collider)
         {
+            extraJump = maxExtraJump;
             isGrounded = true;
         }
         else
@@ -89,19 +91,19 @@ public class Movement : MonoBehaviour
 
         Debug.DrawRay(this.transform.position, Vector2.down, Color.red, 1.2f);
 
-        if (jump && !isGrounded && extraJump > 0 && rb.velocity.y < 8f)
+        if (jump && isGrounded && rb.velocity.y < 2f)
         {
-            rb.AddForce(-40 * rb.velocity.y * Vector2.up);
+            rb.AddForce(Vector2.up * jumpHeight);
+            jump = false;
+
+        }
+        else if (jump && extraJump > 0 && rb.velocity.y < 12f)
+        {
+            rb.AddForce(-37 * rb.velocity.y * Vector2.up);
             rb.AddForce(Vector2.up * jumpHeight);
             jump = false;
             extraJump -= 1;
         }
 
-        if (jump && isGrounded && rb.velocity.y < 2f)
-        {
-            rb.AddForce(Vector2.up * jumpHeight);
-            jump = false;
-            extraJump = maxExtraJump;
-        }
     }
 }   
