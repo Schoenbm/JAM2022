@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
     Vector3 position;
 
     GameObject player;
+    public Planet myPlanet;
     
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class PlayerManager : MonoBehaviour
         player = Instantiate(playerPrefab, new Vector3(0,31,0), Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
         player.GetComponent<Movement>().Manager = this;
+        Planet myPlanet = planet.GetComponent<Planet>();
         iceCount = 0;
         metalScrapCount = 0;
     }
@@ -46,6 +48,12 @@ public class PlayerManager : MonoBehaviour
 
     public void playerPickScrap(){
         metalScrapCount += 1;
+    }
+
+    public void playerSellIce()
+    {
+        myPlanet.plusHealth(iceCount);
+        iceCount = 0;
     }
     
 

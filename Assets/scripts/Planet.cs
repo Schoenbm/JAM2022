@@ -24,4 +24,9 @@ public class Planet : MonoBehaviour
             //EndGame();
         }            
     }
+
+    public void plusHealth(int amount) {
+        health += amount;
+        Debug.Log("Planet healled");
+    }
 }

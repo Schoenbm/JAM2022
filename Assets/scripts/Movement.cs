@@ -50,6 +50,20 @@ public class Movement : MonoBehaviour
         }
     }
 
+    void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.tag == "BaseHealth")
+        {
+            //WHY I CANT COME HERE ?????? :@
+            Debug.Log("Player Sell Ice" );
+            if (Input.GetButtonDown("E"))//E is not mapping in unity enter is probably a best choice
+            {
+                Manager.playerSellIce();
+            } 
+        } 
+    }
+
+
     void FixedUpdate(){
         if(isAlive){
             Vector3 rotation = new Vector3(0,0,Input.GetAxis("Horizontal") * speed * Time.deltaTime);
