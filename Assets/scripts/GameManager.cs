@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public CinemachineVirtualCamera CMcamera;
 
+    public GameObject PauseMenu;
+
     public float timeBetweenItemsSpawn = 3f;
     float timeBeforeNextItemSpawn;
 
@@ -22,6 +24,7 @@ public class GameManager : MonoBehaviour
     int amountScrap = 0;
 
     public bool gameOver;
+    bool gamePause;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,7 @@ public class GameManager : MonoBehaviour
         lifeSpanIce = 10f;
         lifeSpanScrap = 30f;
         gameOver = false;
+        gamePause = false;
         timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
         for(int i =0; i< 20; i++){
             InstanciateLayer1Platform(32.5f, 35) ;
@@ -55,7 +59,24 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!gamePause && (Input.GetKeyDown("p") || Input.GetButtonDown("Cancel"))){
+            PauseGame();
+        }
+        else if(gamePause && (Input.GetKeyDown("p") || Input.GetButtonDown("Cancel"))){
+            UnPauseGame();
+        }
         
+    }
+
+    public void PauseGame(){
+        Time.timeScale = 0f;
+        gamePause = true;
+        PauseMenu.SetActive(true);
+    }
+    public void UnPauseGame(){        
+        gamePause = false;
+        PauseMenu.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     void FixedUpdate(){

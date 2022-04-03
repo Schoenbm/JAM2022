@@ -45,13 +45,10 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void playerDeath(){
-        lifes -= 1;
-        if(lifes <= 0){
-            EndGame();
-        }
-        else{
-            StartCoroutine(RespawnPlayer());
-        }
+        iceCount = 0;
+        metalScrapCount = 0;
+        StartCoroutine(RespawnPlayer());
+        
     }
    
     public void playerPickIce(){
