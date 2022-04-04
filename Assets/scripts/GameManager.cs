@@ -258,11 +258,11 @@ public class GameManager : MonoBehaviour
         foreach(GameObject go in meteors){
             Destroy(go);
         }
-        //StartCoroutine(DezoomCamera());
+        StartCoroutine(DezoomCamera());
         earthCore.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;        
         earthCore.transform.GetChild(0).GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
         earthCore.transform.GetChild(0).GetChild(1).gameObject.GetComponent<ParticleSystem>().Play();
-        //StartCoroutine(DestroyEverything());
+        StartCoroutine(DestroyEverything());
     }
 
     IEnumerator DezoomCamera(){
