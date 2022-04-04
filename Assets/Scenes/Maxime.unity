@@ -1242,42 +1242,6 @@ PrefabInstance:
       propertyPath: menu
       value: 
       objectReference: {fileID: 1895736264}
-    - target: {fileID: 583479257, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -30.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 583479257, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 583479257, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.24961957
-      objectReference: {fileID: 0}
-    - target: {fileID: 583479257, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 583479257, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 583479257, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.968344
-      objectReference: {fileID: 0}
-    - target: {fileID: 583479257, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 151.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 1293581218, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_SortingLayer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1293581218, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -146586019
-      objectReference: {fileID: 0}
     - target: {fileID: 3229884541577928414, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1325,6 +1289,10 @@ PrefabInstance:
     - target: {fileID: 3229884541577928415, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_Name
       value: EarthCore
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976526216759890900, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
