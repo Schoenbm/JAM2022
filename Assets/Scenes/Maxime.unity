@@ -1062,6 +1062,7 @@ MonoBehaviour:
   icePrefab: {fileID: 6612716061669064303, guid: 2b4783e46dd029a47a92d03bfa0642ed, type: 3}
   scrapPrefab: {fileID: 5695617301470431585, guid: 5b4b8ed3eb05e3942b442c1b05f199fc, type: 3}
   earthCore: {fileID: 703291120}
+  background: {fileID: 914146929}
   CMcamera: {fileID: 1269115302}
   PauseMenu: {fileID: 917050048}
   timeBetweenItemsSpawn: 3
@@ -1299,17 +1300,25 @@ PrefabInstance:
       propertyPath: menu
       value: 
       objectReference: {fileID: 1895736264}
-    - target: {fileID: 408351418749529446, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: -111344106488075306, guid: 8c3e0acdea286f44e8788244da700f61, type: 2}
-    - target: {fileID: 1036466818597592199, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.6
+    - target: {fileID: 138354179, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1036466818597592199, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 5.66
+    - target: {fileID: 138354179, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 138354179, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 138354180, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 138354180, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3229884541577928414, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_RootOrder
@@ -1359,22 +1368,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EarthCore
       objectReference: {fileID: 0}
-    - target: {fileID: 4976526216759890900, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7710279538624980559, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: maxHealth
-      value: 3000
-      objectReference: {fileID: 0}
     - target: {fileID: 7710279538624980559, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 639453175}
-    - target: {fileID: 7794052218330370057, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: -111344106488075306, guid: 8c3e0acdea286f44e8788244da700f61, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
 --- !u!1 &703291120 stripped
@@ -1708,6 +1705,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 858474056}
   m_CullTransparentMesh: 1
+--- !u!1 &914146929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 138354178, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+  m_PrefabInstance: {fileID: 703291119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &917050047
 PrefabInstance:
   m_ObjectHideFlags: 0

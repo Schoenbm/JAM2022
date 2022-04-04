@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject icePrefab;
     public GameObject scrapPrefab;
     public GameObject earthCore;
-
+    public GameObject background;
     public CinemachineVirtualCamera CMcamera;
 
     public GameObject PauseMenu;
@@ -74,12 +74,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(!gamePause && (Input.GetKeyDown("p") || Input.GetButtonDown("Cancel"))){
             PauseGame();
         }
         else if(gamePause && (Input.GetKeyDown("p") || Input.GetButtonDown("Cancel"))){
             UnPauseGame();
         }
+        if (gameOver)
+            return;
         ChangeBackgroundColor();
     }
     public void healRocket(int heal)
@@ -216,11 +219,11 @@ public class GameManager : MonoBehaviour
 
     void CreateGradient(){
         colorKey = new GradientColorKey[4];
-        colorKey[0].color = Color.cyan;
+        colorKey[0].color = new Color(1,1,1);
         colorKey[0].time = 0f;
-        colorKey[1].color = Color.yellow;
+        colorKey[1].color = new Color(1,1,0);
         colorKey[1].time = 0.50f;
-        colorKey[2].color = Color.red;
+        colorKey[2].color = new Color(1,0,0);
         colorKey[2].time = 0.70f;
         colorKey[3].color = Color.black;
         colorKey[3].time = 0.95f;
@@ -240,8 +243,7 @@ public class GameManager : MonoBehaviour
 
     void ChangeBackgroundColor(){
         float value = earthCore.transform.GetChild(0).GetComponent<Planet>().health / earthCore.transform.GetChild(0).GetComponent<Planet>().maxHealth;
-        GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
-        cam.GetComponent<Camera>().backgroundColor = grad.Evaluate(1-value);
+        background.GetComponent<SpriteRenderer>().color = grad.Evaluate(1-value);
     }
 
 
