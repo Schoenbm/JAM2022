@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     //Rocket Health Varibiable
     public int maxHealthRocket = 100;
     public int healthRocket = 1;
-
+    int maxRetryPlatform = 50000;
+    int retryPlatform = 0;
     AudioSource MainMusic;
     AudioLowPassFilter MusicFilter;
 
@@ -48,22 +49,22 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         gamePause = false;
         timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
-        for(int i =0; i< 20; i++){
+        for(int i =0; i< 21; i++){
             InstanciateLayer1Platform(32.5f, 35) ;
         }
-        for(int i =0; i< 10; i++){
+        for(int i =0; i< 12; i++){
             InstanciateLayer1Platform(36.5f, 38);
         }
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 12; i++)
         {
             InstanciateLayer1Platform(38.5f, 42);
         }
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 22; i++)
         {
             InstanciateLayer1Platform(45, 50);
         }
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 24; i++)
         {
             InstanciateLayer1Platform(54, 60);
         }
@@ -115,19 +116,25 @@ public class GameManager : MonoBehaviour
     }
 
     void InstanciateLayer1Platform(float min, float max){
+        if (retryPlatform > maxRetryPlatform)
+            return;
         int angle = (int)Random.Range(0f,359f);
         float posX = Mathf.Cos(angle * Mathf.Deg2Rad);
         float posY = Mathf.Sin(angle * Mathf.Deg2Rad);
+        float size = Random.Range(-0.2f, 0.7f);
         float height = Random.Range(min,max);
         Vector3 position = height * new Vector3(posX,posY,0);
         GameObject platform = Instantiate(platformPrefab, position, Quaternion.identity) as GameObject;
         platform.transform.eulerAngles = new Vector3(0,0,angle - 90);
         platform.transform.parent = earthCore.transform;
-
+        platform.transform.localScale = new Vector3(platform.transform.localScale.x + size, platform.transform.localScale.y );
+        if (retryPlatform > maxRetryPlatform)
+            return;
         if(!platform.GetComponent<Platform>().isCorrect){
             Destroy(platform.gameObject);
             Debug.Log("Error platform L1");
             InstanciateLayer1Platform(min, max);
+            retryPlatform++;
         }
     }
 
