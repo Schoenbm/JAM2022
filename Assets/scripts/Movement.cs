@@ -12,6 +12,8 @@ public class Movement : MonoBehaviour
     LayerMask groundMask;
     bool isGrounded = true;
     bool jump = false;
+
+    bool faceRight;
     public int maxExtraJump = 0;
     int extraJump = 1;
     public bool isAlive;
@@ -26,6 +28,7 @@ public class Movement : MonoBehaviour
     void Start(){
         groundMask = LayerMask.GetMask("Planet", "Platform");
         isAlive = true;
+        faceRight = true;
         rb = this.GetComponent<Rigidbody2D>();
         extraJump = maxExtraJump;
     }
@@ -111,6 +114,14 @@ public class Movement : MonoBehaviour
     void FixedUpdate(){
         if(isAlive){
             Vector3 rotation = new Vector3(0,0,Input.GetAxis("Horizontal") * speed * Time.deltaTime);
+            if(faceRight && rotation.z < 0){
+                faceRight = false;
+                this.transform.gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            }
+            if(!faceRight && rotation.z > 0){
+                faceRight = true;
+                this.transform.gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            }
             earth.transform.eulerAngles += rotation;
         }
         
