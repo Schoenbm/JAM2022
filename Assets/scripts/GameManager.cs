@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -196,6 +197,10 @@ public class GameManager : MonoBehaviour
         scrap.GetComponent<Collectible>().lifeSpan = lifeSpanScrap;
         scrap.GetComponent<Collectible>().platform = platforms[index].GetComponent<Platform>();
         amountScrap++;
+    }
+
+    public void BackToMenu(){
+        SceneManager.LoadScene(0);
     }
 
     public void CameraShake(){
