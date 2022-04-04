@@ -15,8 +15,8 @@ public class CameraTracker : MonoBehaviour
     {
         float coef = player.gameObject.transform.transform.position.y - 29;
         if(rb.velocity.y >= 0)
-            transform.localPosition = new Vector3(Input.GetAxis("Horizontal") * 2, rb.velocity.y/ 5 - coef/8, 0);
+            transform.localPosition = new Vector3(Input.GetAxis("Horizontal") * 2, rb.velocity.y/ 5 - coef/9, 0);
         else
-            transform.localPosition = new Vector3(Input.GetAxis("Horizontal") * 2, rb.velocity.y / 2.7f - coef/8, 0);
+            transform.localPosition = new Vector3(Input.GetAxis("Horizontal") * 2, rb.velocity.y / 5f - coef/9, 0);
     }
 }
