@@ -43,7 +43,7 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate(){
         if(invulnerable && player){
-            player.GetComponent<SpriteRenderer>().color = Color.blue;
+            player.GetComponent<SpriteRenderer>().color = new Color(0.4f,0.4f,1,0.6f);
         }
         else if(player){
             player.GetComponent<SpriteRenderer>().color = Color.white;
@@ -79,7 +79,7 @@ public class PlayerManager : MonoBehaviour
 
     public void playerSellIce() {
         FindObjectOfType<AudioManager>().Play("Planet Cooling");
-        myPlanet.plusHealth(iceCount * 10);
+        myPlanet.plusHealth(iceCount * 8);
         iceCount = 0;
     }
     
