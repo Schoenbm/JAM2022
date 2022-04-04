@@ -162,8 +162,9 @@ public class GameManager : MonoBehaviour
         float angle = Mathf.Atan2(earthCore.transform.position.normalized.y , earthCore.transform.position.normalized.x);
 
         int index = (int)Random.Range(0,platforms.Length-1);
-        while(platforms[index].GetComponent<Platform>().hasItem || platforms[index].transform.position.y < 40){
+        while (platforms[index].GetComponent<Platform>().hasItem || platforms[index].transform.position.magnitude < 40 || platforms[index].transform.position.y > 0){
             index = (int)Random.Range(0,platforms.Length-1);
+            Debug.Log(platforms[index].transform.localPosition.y + " , " + platforms[index].transform.position.y);
         }
         platforms[index].GetComponent<Platform>().hasItem = true;
         Vector3 position = platforms[index].transform.position;
@@ -183,7 +184,7 @@ public class GameManager : MonoBehaviour
         float angle = Mathf.Atan2(earthCore.transform.position.normalized.y , earthCore.transform.position.normalized.x);
 
         int index = (int)Random.Range(0,platforms.Length-1);
-        while(platforms[index].GetComponent<Platform>().hasItem){
+        while(platforms[index].GetComponent<Platform>().hasItem || platforms[index].transform.position.y > 0 ){
             index = (int)Random.Range(0,platforms.Length-1);
         }
         platforms[index].GetComponent<Platform>().hasItem = true;
