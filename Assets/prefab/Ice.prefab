@@ -4895,4 +4895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42c4210e520c7467cb5111d97a5f970c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeSpan: 10
+  lifeSpan: 13
+  SpinSpeed: 0
+  WaveAmplitude: 0
+  platform: {fileID: 0}

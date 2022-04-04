@@ -7,8 +7,6 @@ using TMPro;
 public class PlayerManager : MonoBehaviour
 {
 
-    int lifes = 3;
-
     public CinemachineVirtualCamera cineCamera;
     public int iceCount;
     int metalScrapCount;
