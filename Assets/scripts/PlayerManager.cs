@@ -8,7 +8,6 @@ public class PlayerManager : MonoBehaviour
 {
 
     int lifes = 3;
-    public int iceValue = 10;
 
     public CinemachineVirtualCamera cineCamera;
     public int iceCount;
@@ -24,6 +23,7 @@ public class PlayerManager : MonoBehaviour
 
     public Canvas HUD;
     public TextMeshProUGUI iceCounter;
+    public int iceValue = 100;
     public TextMeshProUGUI scrapCounter;
 
     void Start()
