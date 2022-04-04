@@ -64,6 +64,7 @@ public class ScreenUI : MonoBehaviour
             Debug.Log("Bough speed");
             playerManager.setMetalScrap(playerManager.getMetalScrap() - data.getCost("speed"));
             data.levelUp("speed");
+            FindObjectOfType<AudioManager>().Play("Pickup Scrap");
         }
         Debug.Log("Can't buy");
     }
@@ -74,6 +75,7 @@ public class ScreenUI : MonoBehaviour
         {
             playerManager.setMetalScrap(playerManager.getMetalScrap() - data.getCost("ice"));
             data.levelUp("ice");
+            FindObjectOfType<AudioManager>().Play("Pickup Scrap");
         }
     }
 
@@ -83,6 +85,7 @@ public class ScreenUI : MonoBehaviour
         {
             playerManager.setMetalScrap(playerManager.getMetalScrap() - data.getCost("jump"));
             data.levelUp("jump");
+            FindObjectOfType<AudioManager>().Play("Pickup Scrap");
         }
     }
 
@@ -92,6 +95,7 @@ public class ScreenUI : MonoBehaviour
         {
             playerManager.setMetalScrap(playerManager.getMetalScrap() - data.getCost("extraJump"));
             data.levelUp("extraJump");
+            FindObjectOfType<AudioManager>().Play("Pickup Scrap");
         }
     }
 }
