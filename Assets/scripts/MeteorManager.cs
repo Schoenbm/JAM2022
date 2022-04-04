@@ -20,12 +20,12 @@ public class MeteorManager : MonoBehaviour
     public Planet myPlanet;
 
     void Start(){
-        maxTimeBetweenMeteors = 3f;
-        minTimeBetweenMeteors = 0.25f;
+        maxTimeBetweenMeteors = 2.5f;
+        minTimeBetweenMeteors = 0.3f;
         timeBetweenMeteors = maxTimeBetweenMeteors;
         minAmount = 4;
         amount = minAmount;
-        maxAmount = 10;
+        maxAmount = 8;
         //myPlanet = earthCore.transform.GetChild(0).GetComponent<Planet>();
     }
 

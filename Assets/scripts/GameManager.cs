@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject PauseMenu;
 
-    public float timeBetweenItemsSpawn = 3f;
+    public float timeBetweenItemsSpawn = 2f;
     float timeBeforeNextItemSpawn;
 
     public float lifeSpanIce;
@@ -49,17 +49,17 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         gamePause = false;
         timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
-        for(int i =0; i< 21; i++){
+        for(int i =0; i< 15; i++){
             InstanciateLayer1Platform(32.5f, 35) ;
         }
-        for(int i =0; i< 12; i++){
+        for(int i =0; i< 10; i++){
             InstanciateLayer1Platform(36.5f, 38);
         }
         for (int i = 0; i < 12; i++)
         {
             InstanciateLayer1Platform(38.5f, 42);
         }
-        for (int i = 0; i < 22; i++)
+        for (int i = 0; i < 18; i++)
         {
             InstanciateLayer1Platform(45, 50);
         }
@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
         float angle = Mathf.Atan2(earthCore.transform.position.normalized.y , earthCore.transform.position.normalized.x);
 
         int index = (int)Random.Range(0,platforms.Length-1);
-        while (platforms[index].GetComponent<Platform>().hasItem || platforms[index].transform.position.magnitude < 40 || platforms[index].transform.position.y > 0){
+        while (platforms[index].GetComponent<Platform>().hasItem || platforms[index].transform.position.magnitude < 40 || platforms[index].transform.position.y > 20){
             index = (int)Random.Range(0,platforms.Length-1);
             Debug.Log(platforms[index].transform.localPosition.y + " , " + platforms[index].transform.position.y);
         }
@@ -194,7 +194,7 @@ public class GameManager : MonoBehaviour
         float angle = Mathf.Atan2(earthCore.transform.position.normalized.y , earthCore.transform.position.normalized.x);
 
         int index = (int)Random.Range(0,platforms.Length-1);
-        while(platforms[index].GetComponent<Platform>().hasItem || platforms[index].transform.position.y > 0 ){
+        while(platforms[index].GetComponent<Platform>().hasItem || platforms[index].transform.position.y > 20 ){
             index = (int)Random.Range(0,platforms.Length-1);
         }
         platforms[index].GetComponent<Platform>().hasItem = true;

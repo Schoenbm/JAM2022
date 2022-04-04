@@ -39,7 +39,8 @@ public class Planet : MonoBehaviour
     }
 
     public void plusHealth(int amount) {
-        health += amount;
+        health += 40 * amount; // 20 = 1sec
+        health = Mathf.Min(maxHealth, health);
         Debug.Log("Planet healled");
     }
 }

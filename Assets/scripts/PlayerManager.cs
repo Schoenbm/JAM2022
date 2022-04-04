@@ -37,7 +37,7 @@ public class PlayerManager : MonoBehaviour
         cineCamera.m_Follow =player.GetComponent<Movement>().cameraTracker.transform;
         Planet myPlanet = planet.GetComponent<Planet>();        
         iceCount = 0;
-        metalScrapCount = 50;
+        metalScrapCount = 10;
         iceCounter = HUD.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         scrapCounter = HUD.transform.GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
     }
@@ -81,7 +81,7 @@ public class PlayerManager : MonoBehaviour
 
     public void playerSellIce() {
         FindObjectOfType<AudioManager>().Play("Planet Cooling");
-        myPlanet.plusHealth(iceCount);
+        myPlanet.plusHealth(iceCount * 10);
         iceCount = 0;
     }
     
