@@ -36,7 +36,7 @@ public class PlayerManager : MonoBehaviour
         cineCamera.m_Follow =player.GetComponent<Movement>().cameraTracker.transform;
         Planet myPlanet = planet.GetComponent<Planet>();        
         iceCount = 0;
-        metalScrapCount = 0;
+        metalScrapCount = 50;
         iceCounter = HUD.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         scrapCounter = HUD.transform.GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
     }
@@ -50,8 +50,8 @@ public class PlayerManager : MonoBehaviour
             player.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
-        //iceCounter.SetText(metalScrapCount.ToString());
-        //scrapCounter.SetText(iceCount.ToString());
+        iceCounter.SetText(metalScrapCount.ToString());
+        scrapCounter.SetText(iceCount.ToString());
     }
 
     public void playerDeath(){
@@ -61,6 +61,13 @@ public class PlayerManager : MonoBehaviour
         
     }
    
+    public void repairShip()
+    {
+        if(metalScrapCount > 0)
+            gameManager.healRocket(metalScrapCount);
+        metalScrapCount = 0;
+    }
+
     public void playerPickIce(){
         FindObjectOfType<AudioManager>().Play("Pickup Item");
         iceCount += 1*iceValue;

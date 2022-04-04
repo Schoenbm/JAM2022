@@ -77,6 +77,8 @@ public class GameManager : MonoBehaviour
     public void healRocket(int heal)
     {
         healthRocket += heal;
+        if (healthRocket > maxHealthRocket)
+            Debug.Log("Win");
     }
     public void PauseGame(){
         Time.timeScale = 0f;
