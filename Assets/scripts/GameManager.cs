@@ -219,11 +219,15 @@ public class GameManager : MonoBehaviour
 
     void CreateGradient(){
         colorKey = new GradientColorKey[4];
-        colorKey[0].color = new Color(1,1,1);
+        Color color1 = new Color(0.60f, 0.79f, 0.49f);
+        Color color2 = new Color(0.69f, 0.27f,0.015f, 1);
+        Color color3 = new Color(1, 0, 0.08f, 1);
+
+        colorKey[0].color = color1;
         colorKey[0].time = 0f;
-        colorKey[1].color = new Color(1,1,0);
+        colorKey[1].color = color2;
         colorKey[1].time = 0.50f;
-        colorKey[2].color = new Color(1,0,0);
+        colorKey[2].color = color3;
         colorKey[2].time = 0.70f;
         colorKey[3].color = Color.black;
         colorKey[3].time = 0.95f;
