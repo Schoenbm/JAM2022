@@ -238,7 +238,9 @@ public class GameManager : MonoBehaviour
 
 
     public void EndGame(){
-        gameOver = true;
+        this.gameObject.GetComponent<AudioSource>().enabled = false;
+        FindObjectOfType<AudioManager>().Play("Planet Explode");
+        gameOver = true;        
         Destroy(GameObject.FindGameObjectWithTag("Player"));
         GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
         foreach(GameObject go in platforms){
@@ -256,11 +258,11 @@ public class GameManager : MonoBehaviour
         foreach(GameObject go in meteors){
             Destroy(go);
         }
-        StartCoroutine(DezoomCamera());
-        earthCore.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        //StartCoroutine(DezoomCamera());
+        earthCore.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().enabled = false;        
         earthCore.transform.GetChild(0).GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
         earthCore.transform.GetChild(0).GetChild(1).gameObject.GetComponent<ParticleSystem>().Play();
-        StartCoroutine(DestroyEverything());
+        //StartCoroutine(DestroyEverything());
     }
 
     IEnumerator DezoomCamera(){

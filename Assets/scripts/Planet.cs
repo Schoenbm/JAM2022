@@ -20,6 +20,7 @@ public class Planet : MonoBehaviour
     void FixedUpdate()
     {
         if(health <= 0){
+            FindObjectOfType<AudioManager>().Play("Planet Explode");
             gameManager.EndGame();
         }
         if(timeBeforeNextHpLoss <= 0f){

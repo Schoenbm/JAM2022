@@ -70,16 +70,17 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void playerPickIce(){
-        FindObjectOfType<AudioManager>().Play("Pickup Item");
+        FindObjectOfType<AudioManager>().Play("Pickup Ice");
         iceCount += 1*iceValue;
     }
 
     public void playerPickScrap(){
-        FindObjectOfType<AudioManager>().Play("Pickup Item");
+        FindObjectOfType<AudioManager>().Play("Pickup Scrap");
         metalScrapCount += 1;
     }
 
     public void playerSellIce() {
+        FindObjectOfType<AudioManager>().Play("Planet Cooling");
         myPlanet.plusHealth(iceCount);
         iceCount = 0;
     }
@@ -119,6 +120,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     void EndGame(){
+        FindObjectOfType<AudioManager>().Play("Planet Explode");
         gameManager.EndGame();
     }
 }
