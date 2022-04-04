@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     //Rocket Health Varibiable
     public int maxHealthRocket = 100;
     public int healthRocket = 1;
-    int maxRetryPlatform = 50;
+    int maxRetryPlatform = 50000;
     int retryPlatform = 0;
     AudioSource MainMusic;
     AudioLowPassFilter MusicFilter;
@@ -49,22 +49,22 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         gamePause = false;
         timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
-        for(int i =0; i< 10; i++){
+        for(int i =0; i< 21; i++){
             InstanciateLayer1Platform(32.5f, 35) ;
         }
-        for(int i =0; i< 10; i++){
+        for(int i =0; i< 12; i++){
             InstanciateLayer1Platform(36.5f, 38);
         }
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 12; i++)
         {
             InstanciateLayer1Platform(38.5f, 42);
         }
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 22; i++)
         {
             InstanciateLayer1Platform(45, 50);
         }
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < 24; i++)
         {
             InstanciateLayer1Platform(54, 60);
         }
@@ -132,16 +132,12 @@ public class GameManager : MonoBehaviour
         platform.transform.parent = earthCore.transform;
         platform.transform.localScale = new Vector3(platform.transform.localScale.x + size, platform.transform.localScale.y );
         if (retryPlatform > maxRetryPlatform)
-        {
-            Debug.Log("MAX RETRY");
             return;
-        }
-
         if(!platform.GetComponent<Platform>().isCorrect){
             Destroy(platform.gameObject);
             Debug.Log("Error platform L1");
-            retryPlatform++;
             InstanciateLayer1Platform(min, max);
+            retryPlatform++;
         }
     }
 

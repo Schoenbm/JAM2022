@@ -1300,17 +1300,29 @@ PrefabInstance:
       propertyPath: menu
       value: 
       objectReference: {fileID: 1895736264}
-    - target: {fileID: 292849503446982541, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: hasItem
-      value: 0
+    - target: {fileID: 138354179, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fcd38a02e6614e845a75ef06b739f811, type: 3}
+    - target: {fileID: 138354179, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 572826988960104267, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 138354179, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_Color.g
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 572826988960104267, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
+    - target: {fileID: 138354179, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 138354180, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 138354180, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3229884541577928414, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_RootOrder
@@ -1361,92 +1373,26 @@ PrefabInstance:
       value: EarthCore
       objectReference: {fileID: 0}
     - target: {fileID: 3229884542223975065, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_Size.x
-      value: 0.99150425
+      propertyPath: m_Color.b
+      value: 0.5764706
       objectReference: {fileID: 0}
     - target: {fileID: 3229884542223975065, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_Size.y
-      value: 0.99150425
+      propertyPath: m_Color.g
+      value: 0.5919532
       objectReference: {fileID: 0}
     - target: {fileID: 3229884542223975065, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 8c330c709effd0c45a31beac0a0685d8, type: 3}
+      propertyPath: m_Color.r
+      value: 0.99215686
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710279538624980559, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: maxHealth
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 7710279538624980559, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 639453175}
-    - target: {fileID: 8435111585199420130, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_Name
-      value: LongPlateform3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8435111585199420130, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8435111585199420130, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 8569496067907097124, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: hasItem
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656096774354098921, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656096774354098921, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656096774486196417, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656096774486196417, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656096775339559455, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656096775339559455, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656096776284703568, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8656096776284703568, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 8918213756194450326, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: hasItem
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8918213757128583897, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: hasItem
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8918213757445201927, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: hasItem
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8918213757585701423, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-      propertyPath: hasItem
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8918213757585701423, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-    - {fileID: 8918213756194450326, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-    - {fileID: 8918213757128583897, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-    - {fileID: 8569496067907097124, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-    - {fileID: 292849503446982541, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
-    - {fileID: 8918213757445201927, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
 --- !u!1 &703291120 stripped
 GameObject:
