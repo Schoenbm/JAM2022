@@ -855,6 +855,7 @@ MonoBehaviour:
   iceCount: 0
   playerPrefab: {fileID: 3417853700374901729, guid: 3a797e77a9143b247b11d9699b3c37c5, type: 3}
   planet: {fileID: 703291120}
+  player: {fileID: 0}
   myPlanet: {fileID: 127958094}
   gameManager: {fileID: 639453175}
   invulnerable: 0
@@ -921,6 +922,8 @@ MonoBehaviour:
   lifeSpanScrap: 0
   amount: 3
   gameOver: 0
+  maxHealthRocket: 100
+  healthRocket: 1
 --- !u!114 &639453176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1159,7 +1162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7710279538624980559, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: maxHealth
-      value: 5000
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7710279538624980559, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: gameManager
@@ -1366,8 +1369,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Count
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1924,8 +1927,8 @@ Camera:
   m_GameObject: {fileID: 1699145039}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.9622642, g: 0.004538993, b: 0.004538993, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviour
 
     AudioSource MainMusic;
     AudioLowPassFilter MusicFilter;
+
+    Gradient grad;
+    GradientColorKey[] colorKey;
+    GradientAlphaKey[] alphaKey;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +42,8 @@ public class GameManager : MonoBehaviour
         MainMusic = this.GetComponent<AudioSource>();
         MusicFilter = this.GetComponent<AudioLowPassFilter>();
         MusicFilter.cutoffFrequency = 22000;
+        grad = new Gradient();
+        CreateGradient();
         gameOver = false;
         gamePause = false;
         timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
@@ -72,7 +78,7 @@ public class GameManager : MonoBehaviour
         else if(gamePause && (Input.GetKeyDown("p") || Input.GetButtonDown("Cancel"))){
             UnPauseGame();
         }
-        
+        ChangeBackgroundColor();
     }
     public void healRocket(int heal)
     {
@@ -193,6 +199,36 @@ public class GameManager : MonoBehaviour
     }
 
     public void CameraShake(){
+    }
+
+    void CreateGradient(){
+        colorKey = new GradientColorKey[4];
+        colorKey[0].color = Color.cyan;
+        colorKey[0].time = 0f;
+        colorKey[1].color = Color.yellow;
+        colorKey[1].time = 0.50f;
+        colorKey[2].color = Color.red;
+        colorKey[2].time = 0.70f;
+        colorKey[3].color = Color.black;
+        colorKey[3].time = 0.95f;
+
+        alphaKey = new GradientAlphaKey[4];
+        alphaKey[0].alpha = 1f;
+        alphaKey[0].time = 0f;
+        alphaKey[1].alpha = 1f;
+        alphaKey[1].time = 0.50f;
+        alphaKey[2].alpha = 1f;
+        alphaKey[2].time = 0.70f;
+        alphaKey[3].alpha = 1f;
+        alphaKey[3].time = 0.95f;
+
+        grad.SetKeys(colorKey, alphaKey);
+    }
+
+    void ChangeBackgroundColor(){
+        float value = earthCore.transform.GetChild(0).GetComponent<Planet>().health / earthCore.transform.GetChild(0).GetComponent<Planet>().maxHealth;
+        GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
+        cam.GetComponent<Camera>().backgroundColor = grad.Evaluate(1-value);
     }
 
 
