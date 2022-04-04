@@ -23,13 +23,14 @@ public class PlayerManager : MonoBehaviour
 
     public Canvas HUD;
     public TextMeshProUGUI iceCounter;
-    public int iceValue = 100;
+    public int iceValue;
     public TextMeshProUGUI scrapCounter;
 
     void Start()
     {
         playerData = this.gameObject.GetComponent<PlayerData>();
         invulnerable = false;
+        iceValue = 100;
         player = Instantiate(playerPrefab, new Vector3(0,31,0), Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
         player.GetComponent<Movement>().Manager = this;
@@ -69,16 +70,17 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void playerPickIce(){
-        FindObjectOfType<AudioManager>().Play("Pickup Item");
+        FindObjectOfType<AudioManager>().Play("Pickup Ice");
         iceCount += 1*iceValue;
     }
 
     public void playerPickScrap(){
-        FindObjectOfType<AudioManager>().Play("Pickup Item");
+        FindObjectOfType<AudioManager>().Play("Pickup Scrap");
         metalScrapCount += 1;
     }
 
     public void playerSellIce() {
+        FindObjectOfType<AudioManager>().Play("Planet Cooling");
         myPlanet.plusHealth(iceCount);
         iceCount = 0;
     }
@@ -118,6 +120,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     void EndGame(){
+        FindObjectOfType<AudioManager>().Play("Planet Explode");
         gameManager.EndGame();
     }
 }

@@ -50,11 +50,13 @@ public class Movement : MonoBehaviour
         }
         if (Input.GetKeyDown("e") && inRocket && !inRocketMenu)
         {
+            FindObjectOfType<AudioManager>().Play("Open Shop");
             rocket.ActivateMenu(true);
             inRocketMenu = true;
         }
         else if (Input.GetKeyDown("e") && inRocket && inRocketMenu)
         {
+            FindObjectOfType<AudioManager>().Play("Close Shop");
             rocket.ActivateMenu(false);
             inRocketMenu = false;
         }

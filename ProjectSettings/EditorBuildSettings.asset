@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartHugo.unity
     guid: d122abe4f4661c84b93e1d01bf9e66b2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Hugo.unity
     guid: 554e5caea4d1fde4ea5765fb62c5f8bd
+  - enabled: 1
+    path: Assets/Scenes/Maxime.unity
+    guid: 7398a584cb5177f489a3b95d91b53e0a
   m_configObjects: {}

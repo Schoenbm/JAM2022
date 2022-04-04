@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3030594061755080995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3030594061755080997}
+  - component: {fileID: 3030594061755080994}
+  m_Layer: 0
+  m_Name: AudioManager 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3030594061755080997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030594061755080995}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3030594061755080994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3030594061755080995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06134e6c77f6e6479d45d8812383c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - Name: Meteor Crash
+    clip: {fileID: 8300000, guid: 56e83129d2d4fdb44a848449ebf20778, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Pickup Scrap
+    clip: {fileID: 8300000, guid: de670749c30244d48bb2485b29c89dbc, type: 3}
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Pickup Ice
+    clip: {fileID: 8300000, guid: ab624aeb79f165641a23148009f7bea6, type: 3}
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Open Shop
+    clip: {fileID: 8300000, guid: ae10f7ca59b81bc4a9af89e3bcbd713b, type: 3}
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Close Shop
+    clip: {fileID: 8300000, guid: d1cff0ca0c7e7e243af22ccb22f9cff1, type: 3}
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Planet Cooling
+    clip: {fileID: 8300000, guid: 36e4b1734a27c9f4da679784d88b31ce, type: 3}
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Start Button
+    clip: {fileID: 8300000, guid: b3df7fda7a3238247990a1ed0faee6c2, type: 3}
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Press Button
+    clip: {fileID: 8300000, guid: 6de060190d490184db5d52fa1fa64823, type: 3}
+    volume: 0.8
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Planet Explode
+    clip: {fileID: 8300000, guid: 21864987f17a498479b6a696d8ab088f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
