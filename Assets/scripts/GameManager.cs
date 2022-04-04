@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public GameObject scrapPrefab;
     public GameObject earthCore;
     public GameObject background;
+    public Canvas winScreen;
+    public Canvas HUD;
+    public Canvas RocketScreen;
     public CinemachineVirtualCamera CMcamera;
 
     public GameObject PauseMenu;
@@ -39,6 +42,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        winScreen.enabled = false;
+
         lifeSpanIce = 10f;
         lifeSpanScrap = 30f;
         MainMusic = this.GetComponent<AudioSource>();
@@ -89,7 +94,13 @@ public class GameManager : MonoBehaviour
     {
         healthRocket += heal;
         if (healthRocket > maxHealthRocket)
-            Debug.Log("Win");
+        {
+            HUD.enabled = false;
+            RocketScreen.enabled = false;
+            winScreen.enabled = true;
+            Time.timeScale = 0f;
+
+        }
     }
     public void PauseGame(){
         Time.timeScale = 0f;
@@ -288,6 +299,8 @@ public class GameManager : MonoBehaviour
     IEnumerator DestroyEverything(){
         yield return new WaitForSeconds(5f);
         Destroy(earthCore.gameObject);
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene(0);
     }
 
 

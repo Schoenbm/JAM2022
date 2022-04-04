@@ -57,3 +57,6 @@ TagManager:
   - name: Shop
     uniqueID: 4148381277
     locked: 0
+  - name: Player
+    uniqueID: 1143147567
+    locked: 0

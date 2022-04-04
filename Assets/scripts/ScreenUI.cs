@@ -59,7 +59,7 @@ public class ScreenUI : MonoBehaviour
 
     public void buySpeed()
     {
-        if(playerManager.getMetalScrap() > data.getCost("speed"))
+        if(playerManager.getMetalScrap() >= data.getCost("speed"))
         {
             Debug.Log("Bough speed");
             playerManager.setMetalScrap(playerManager.getMetalScrap() - data.getCost("speed"));
@@ -71,7 +71,7 @@ public class ScreenUI : MonoBehaviour
 
     public void buyIce()
     {
-        if (playerManager.getMetalScrap() > data.getCost("ice"))
+        if (playerManager.getMetalScrap() >= data.getCost("ice"))
         {
             playerManager.setMetalScrap(playerManager.getMetalScrap() - data.getCost("ice"));
             data.levelUp("ice");
@@ -81,7 +81,7 @@ public class ScreenUI : MonoBehaviour
 
     public void buyJump()
     {
-        if (playerManager.getMetalScrap() > data.getCost("jump"))
+        if (playerManager.getMetalScrap() >= data.getCost("jump"))
         {
             playerManager.setMetalScrap(playerManager.getMetalScrap() - data.getCost("jump"));
             data.levelUp("jump");
@@ -91,7 +91,7 @@ public class ScreenUI : MonoBehaviour
 
     public void buyExtraJump()
     {
-        if (playerManager.getMetalScrap() > data.getCost("extraJump"))
+        if (playerManager.getMetalScrap() >= data.getCost("extraJump"))
         {
             playerManager.setMetalScrap(playerManager.getMetalScrap() - data.getCost("extraJump"));
             data.levelUp("extraJump");

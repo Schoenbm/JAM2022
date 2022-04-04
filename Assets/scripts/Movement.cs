@@ -127,8 +127,10 @@ public class Movement : MonoBehaviour
             earth.transform.eulerAngles += rotation;
         }
         
-        RaycastHit2D ray = Physics2D.Raycast(this.transform.position - new Vector3(0,1,0), Vector2.down,0.5f, groundMask);
-        if (ray.collider)
+        RaycastHit2D rayLeft = Physics2D.Raycast(this.transform.position - new Vector3(-0.35f,1,0), Vector2.down,0.5f, groundMask);
+        RaycastHit2D ray = Physics2D.Raycast(this.transform.position - new Vector3(0, 1, 0), Vector2.down, 0.5f, groundMask);
+        RaycastHit2D rayRight = Physics2D.Raycast(this.transform.position - new Vector3(0.35f, 1, 0), Vector2.down, 0.5f, groundMask);
+        if (rayLeft.collider || rayRight.collider || ray.collider)
         {
             extraJump = maxExtraJump;
             isGrounded = true;
@@ -137,8 +139,8 @@ public class Movement : MonoBehaviour
         {
             isGrounded = false;
         }
-
-        Debug.DrawRay(this.transform.position, Vector2.down, Color.red, 1.2f);
+        Debug.DrawRay(this.transform.position - new Vector3(-0.35f, 1, 0), Vector2.down, Color.red, 0.5f);
+        Debug.DrawRay(this.transform.position - new Vector3(0.35f, 1, 0), Vector2.down, Color.red, 0.5f);
 
         if (jump && isGrounded && rb.velocity.y < 0.5f)
         {
