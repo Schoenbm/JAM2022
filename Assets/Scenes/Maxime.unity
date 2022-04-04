@@ -1005,7 +1005,7 @@ MonoBehaviour:
   icePrefab: {fileID: 6612716061669064303, guid: 2b4783e46dd029a47a92d03bfa0642ed, type: 3}
   scrapPrefab: {fileID: 5695617301470431585, guid: 5b4b8ed3eb05e3942b442c1b05f199fc, type: 3}
   earthCore: {fileID: 703291120}
-  CMcamera: {fileID: 0}
+  CMcamera: {fileID: 1269115302}
   PauseMenu: {fileID: 917050048}
   timeBetweenItemsSpawn: 3
   lifeSpanIce: 0
@@ -1242,6 +1242,10 @@ PrefabInstance:
       propertyPath: menu
       value: 
       objectReference: {fileID: 1895736264}
+    - target: {fileID: 408351418749529446, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 3229884541577928414, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1294,6 +1298,18 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7710279538624980559, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7710279538624980559, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 639453175}
+    - target: {fileID: 7794052218330370057, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
 --- !u!1 &703291120 stripped
@@ -3148,7 +3164,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 15
   m_Depth: -1
   m_CullingMask:
@@ -3794,7 +3810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7991486573012034317, guid: 9be51695a77ba5248897e8c75b6fd199, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 2.1252408
+      value: 2.0810812
       objectReference: {fileID: 0}
     - target: {fileID: 7991486573012034317, guid: 9be51695a77ba5248897e8c75b6fd199, type: 3}
       propertyPath: m_Lens.OrthographicSize
