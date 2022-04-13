@@ -8,10 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartHugo.unity
     guid: d122abe4f4661c84b93e1d01bf9e66b2
-  - enabled: 0
-    path: Assets/Scenes/Hugo.unity
-    guid: 554e5caea4d1fde4ea5765fb62c5f8bd
   - enabled: 1
-    path: Assets/Scenes/Maxime.unity
-    guid: 7398a584cb5177f489a3b95d91b53e0a
+    path: Assets/Scenes/Easy.unity
+    guid: 47707a9a91a2f6d45aa27648c7ab5b33
+  - enabled: 1
+    path: Assets/Scenes/Medium.unity
+    guid: d3decfedfdae1794bba4ca3890502b87
+  - enabled: 1
+    path: Assets/Scenes/Hard.unity
+    guid: bc545309d3037404cb83d76d84a28abf
   m_configObjects: {}

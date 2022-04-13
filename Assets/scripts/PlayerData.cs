@@ -27,7 +27,7 @@ public class PlayerData : MonoBehaviour
     {
 
         playerManager = this.gameObject.GetComponent<PlayerManager>();
-        playerMovement = playerManager.player.GetComponent<Movement>();
+        playerMovement = playerManager.player.GetComponent<Movement>(); 
         levelSpeed = 0;
         levelJump = 0;
         levelIce = 0;

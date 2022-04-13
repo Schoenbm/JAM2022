@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Rocket : MonoBehaviour
 {
@@ -19,7 +16,7 @@ public class Rocket : MonoBehaviour
     {
         dialogue.SetActive(b);
     }
-    
+
     public void ActivateMenu(Boolean b)
     {
         dialogue.SetActive(!b);
@@ -29,5 +26,5 @@ public class Rocket : MonoBehaviour
             Time.timeScale = 1f;
         menu.SetActive(b);
     }
-    
+
 }

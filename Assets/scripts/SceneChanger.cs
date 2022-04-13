@@ -9,8 +9,16 @@ public class SceneChanger : MonoBehaviour
     {
         Time.timeScale = 1f;
     }
-    public void StartGame(){
+    public void StartEasy(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    public void StartMedium()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+    }
+    public void StartHard()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
     }
 
     public void BackToMenu(){

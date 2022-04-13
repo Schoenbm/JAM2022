@@ -26,30 +26,36 @@ public class ScreenUI : MonoBehaviour
     }
     private void Update()
     {
-        if (EventSystem.current.currentSelectedGameObject == SpeedButton) {
+        //PointerEventData lastPointer = PointerInputModule.GetLastPointerEventData() // GetLastPointerEventData(PointerInputModule.kMouseLeftId);
+        //if (lastPointer != null)
+          //  return lastPointer.pointerCurrentRaycast.gameObject;
+        //return null;
+
+        if (SpeedButton.GetComponent<ButtonHighlited>().GetHighlighted())// || EventSystem.current.currentSelectedGameObject == SpeedButton)
+        {
             Cost.SetText("Cost :\n" + data.getCost("speed"));
             Effect.SetText("Effect :\n Run faster");
             Level.SetText("Level : " + data.getLevel("speed"));
         }
-        if (EventSystem.current.currentSelectedGameObject == HigherButton)
+        else if (HigherButton.GetComponent<ButtonHighlited>().GetHighlighted())// || EventSystem.current.currentSelectedGameObject == HigherButton)
         {
             Cost.SetText("Cost :\n" + data.getCost("jump"));
             Effect.SetText("Effect :\n Jump Higher");
             Level.SetText("Level : " + data.getLevel("jump"));
         }
-        if (EventSystem.current.currentSelectedGameObject == ExtraJumpButton)
+        else if (ExtraJumpButton.GetComponent<ButtonHighlited>().GetHighlighted())// || EventSystem.current.currentSelectedGameObject == ExtraJumpButton)
         {
-            Cost.SetText("Cost :\n" + data.getCost("extraJump")) ;
+            Cost.SetText("Cost :\n" + data.getCost("extraJump"));
             Effect.SetText("Effect :\n New jump");
             Level.SetText("Level : " + data.getLevel("extraJump"));
         }
-        if (EventSystem.current.currentSelectedGameObject == RepairButton)
+        else if (RepairButton.GetComponent<ButtonHighlited>().GetHighlighted())// || EventSystem.current.currentSelectedGameObject == RepairButton)
         {
             Cost.SetText("Cost :\n all");
             Effect.SetText("Effect :\n Repair ship");
             Level.SetText("");
         }
-        if (EventSystem.current.currentSelectedGameObject == UpgradeIceButton)
+        else if (UpgradeIceButton.GetComponent<ButtonHighlited>().GetHighlighted())// || EventSystem.current.currentSelectedGameObject == UpgradeIceButton)
         {
             Cost.SetText("Cost :\n" + data.getCost("ice"));
             Effect.SetText("Effect :\n Gather more\n ice");

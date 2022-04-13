@@ -144,6 +144,7 @@ MonoBehaviour:
   isAlive: 0
   cameraTracker: {fileID: 4315165157340796726}
   Manager: {fileID: 0}
+  maxCoyoteTime: 0.15
 --- !u!1 &4315165157340796726
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public float lifeSpanIce;
     public float lifeSpanScrap;
     public int amount = 3;
+    public int iceSpawnRate = 1;
     int amountIce = 0;
     int amountScrap = 0;
     public bool gameOver;
@@ -43,9 +44,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         winScreen.enabled = false;
-
-        lifeSpanIce = 10f;
-        lifeSpanScrap = 30f;
         MainMusic = this.GetComponent<AudioSource>();
         MusicFilter = this.GetComponent<AudioLowPassFilter>();
         MusicFilter.cutoffFrequency = 22000;
@@ -54,12 +52,13 @@ public class GameManager : MonoBehaviour
         gameOver = false;
         gamePause = false;
         timeBeforeNextItemSpawn = timeBetweenItemsSpawn;
-        for(int i =0; i< 15; i++){
+        for(int i =0; i< 16; i++){
             InstanciateLayer1Platform(32.5f, 35) ;
         }
-        for(int i =0; i< 10; i++){
+        for(int i =0; i< 12; i++){
             InstanciateLayer1Platform(36.5f, 38);
         }
+
         for (int i = 0; i < 12; i++)
         {
             InstanciateLayer1Platform(38.5f, 42);
@@ -69,21 +68,25 @@ public class GameManager : MonoBehaviour
             InstanciateLayer1Platform(45, 50);
         }
 
-        for (int i = 0; i < 24; i++)
+        for (int i = 0; i < 26; i++)
         {
             InstanciateLayer1Platform(54, 60);
         }
 
+        for (int i = 0; i < 10; i++)
+        {
+            InstanciateScrapItemPlatform();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if(!gamePause && (Input.GetKeyDown("p") || Input.GetButtonDown("Cancel"))){
+        if(!gamePause && (Input.GetKeyDown("p"))){
             PauseGame();
         }
-        else if(gamePause && (Input.GetKeyDown("p") || Input.GetButtonDown("Cancel"))){
+        else if(gamePause && (Input.GetKeyDown("p"))){
             UnPauseGame();
         }
         if (gameOver)
@@ -121,7 +124,7 @@ public class GameManager : MonoBehaviour
             for(int i = 0; i < amount; i++){
                 InstanciateScrapItemPlatform();
             }
-            for(int i =0; i < (int)amount/3; i++){
+            for(int i =0; i < iceSpawnRate; i++){
                 InstanciateIceItemPlatform(); 
 
             }
@@ -183,7 +186,8 @@ public class GameManager : MonoBehaviour
         float angle = Mathf.Atan2(earthCore.transform.position.normalized.y , earthCore.transform.position.normalized.x);
 
         int index = (int)Random.Range(0,platforms.Length-1);
-        while (platforms[index].GetComponent<Platform>().hasItem || platforms[index].transform.position.magnitude < 40 || platforms[index].transform.position.y > 20){
+        while (platforms[index].GetComponent<Platform>().hasItem || platforms[index].transform.position.magnitude < 40 || platforms[index].transform.position.y > 20 || platforms[index].transform.position.y < -30)
+        {
             index = (int)Random.Range(0,platforms.Length-1);
             Debug.Log(platforms[index].transform.localPosition.y + " , " + platforms[index].transform.position.y);
         }
@@ -267,8 +271,24 @@ public class GameManager : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Planet Explode");
         gameOver = true;        
         Destroy(GameObject.FindGameObjectWithTag("Player"));
+        HUD.enabled = false;
         GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
         foreach(GameObject go in platforms){
+            Destroy(go);
+        }
+        GameObject[] shop = GameObject.FindGameObjectsWithTag("IceStation");
+        foreach (GameObject go in shop)
+        {
+            Destroy(go);
+        }
+        GameObject[] rockets = GameObject.FindGameObjectsWithTag("Rocket");
+        foreach (GameObject go in rockets)
+        {
+            Destroy(go);
+        }
+        GameObject[] longplatforms = GameObject.FindGameObjectsWithTag("LongPlatform");
+        foreach (GameObject go in longplatforms)
+        {
             Destroy(go);
         }
         GameObject[] iceItems = GameObject.FindGameObjectsWithTag("Ice");

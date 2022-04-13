@@ -13,7 +13,7 @@ public class Platform : MonoBehaviour
         isCorrect = true;
         hasItem = false;
         LayerMask mask = LayerMask.GetMask("Platform");
-        Vector2 size = new Vector2(4,7);
+        Vector2 size = new Vector2(6,8);
         Matrix4x4 mat = this.transform.localToWorldMatrix;
         Collider2D[] colliders = Physics2D.OverlapBoxAll(mat.GetPosition(), size, mat.rotation.z, mask);
         if(colliders.Length > 1){

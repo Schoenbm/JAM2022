@@ -22,9 +22,10 @@ public class PlayerManager : MonoBehaviour
     public Canvas HUD;
     public TextMeshProUGUI iceCounter;
     public int iceValue;
+    public int startMetalScrap;
     public TextMeshProUGUI scrapCounter;
 
-    void Start()
+    void Awake()
     {
         playerData = this.gameObject.GetComponent<PlayerData>();
         invulnerable = false;
@@ -35,7 +36,7 @@ public class PlayerManager : MonoBehaviour
         cineCamera.m_Follow =player.GetComponent<Movement>().cameraTracker.transform;
         Planet myPlanet = planet.GetComponent<Planet>();        
         iceCount = 0;
-        metalScrapCount = 10;
+        metalScrapCount = startMetalScrap;
         iceCounter = HUD.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         scrapCounter = HUD.transform.GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
     }
