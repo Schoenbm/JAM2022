@@ -5,23 +5,17 @@ using UnityEngine.UI;
 
 public class ButtonHighlited : Button
 {
-    bool mouseover = false;
+
     public bool GetHighlighted()
     {
-        return (mouseover);
+        return (this.IsHighlighted());
     }
 
-    private void OnMouseExit()
+    public void updateButtonState()
     {
-        mouseover = false;
-        InstantClearState();
+        this.DoStateTransition(SelectionState.Highlighted, true);
+        GameObject myEventSystem = GameObject.Find("EventSystem");
+        myEventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(null);
+
     }
-
-
-    private void OnMouseEnter()
-    {
-        mouseover = true;
-        InstantClearState();
-    }
-
 }

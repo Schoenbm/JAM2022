@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
             return;
         if(!platform.GetComponent<Platform>().isCorrect){
             Destroy(platform.gameObject);
-            Debug.Log("Error platform L1");
+            //Debug.Log("Error platform L1");
             InstanciateLayer1Platform(min, max);
             retryPlatform++;
         }
@@ -189,7 +189,6 @@ public class GameManager : MonoBehaviour
         while (platforms[index].GetComponent<Platform>().hasItem || platforms[index].transform.position.magnitude < 40 || platforms[index].transform.position.y > 20 || platforms[index].transform.position.y < -30)
         {
             index = (int)Random.Range(0,platforms.Length-1);
-            Debug.Log(platforms[index].transform.localPosition.y + " , " + platforms[index].transform.position.y);
         }
         platforms[index].GetComponent<Platform>().hasItem = true;
         Vector3 position = platforms[index].transform.position;

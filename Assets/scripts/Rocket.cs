@@ -21,7 +21,7 @@ public class Rocket : MonoBehaviour
     {
         dialogue.SetActive(!b);
         if (b)
-            Time.timeScale = 0.025f;
+            Time.timeScale = 0f;
         else
             Time.timeScale = 1f;
         menu.SetActive(b);

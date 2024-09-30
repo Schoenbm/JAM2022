@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3030594061755080994, guid: 7a152682ae31ea0488217418335dd5c6, type: 3}
+      propertyPath: sounds.Array.data[16].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: bb3749ce9eafbba4f8a022f3cd63c873, type: 3}
     - target: {fileID: 3030594061755080995, guid: 7a152682ae31ea0488217418335dd5c6, type: 3}
       propertyPath: m_Name
       value: AudioManager 1
@@ -187,6 +191,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 101757095153149556, guid: 7f58c5ceb08b97949b1220571eb0a702, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 101757095153149556, guid: 7f58c5ceb08b97949b1220571eb0a702, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 101757095153149556, guid: 7f58c5ceb08b97949b1220571eb0a702, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2004791425}
+    - target: {fileID: 101757095153149556, guid: 7f58c5ceb08b97949b1220571eb0a702, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 101757095153149556, guid: 7f58c5ceb08b97949b1220571eb0a702, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: updateButtonState
+      objectReference: {fileID: 0}
+    - target: {fileID: 101757095153149556, guid: 7f58c5ceb08b97949b1220571eb0a702, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ButtonHighlited, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 101757095153149556, guid: 7f58c5ceb08b97949b1220571eb0a702, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8562236185309526813, guid: 7f58c5ceb08b97949b1220571eb0a702, type: 3}
       propertyPath: data
       value: 
@@ -287,10 +319,6 @@ PrefabInstance:
       propertyPath: gm
       value: 
       objectReference: {fileID: 639453175}
-    - target: {fileID: 8562236186623184929, guid: 7f58c5ceb08b97949b1220571eb0a702, type: 3}
-      propertyPath: shadow
-      value: 
-      objectReference: {fileID: 266182250}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f58c5ceb08b97949b1220571eb0a702, type: 3}
 --- !u!223 &91701236 stripped
@@ -390,17 +418,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143484571}
   m_CullTransparentMesh: 1
---- !u!114 &266182250 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8562236186623184935, guid: 7f58c5ceb08b97949b1220571eb0a702, type: 3}
-  m_PrefabInstance: {fileID: 91701235}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &357867801
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +660,7 @@ MonoBehaviour:
   iceValue: 10
   startMetalScrap: 10
   scrapCounter: {fileID: 0}
+  sm: {fileID: 0}
 --- !u!4 &639453173
 Transform:
   m_ObjectHideFlags: 0
@@ -724,9 +742,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0f00000010000000110000001300000016000000
   costSpeed: 01000000020000000300000005000000e7030000
-  jump: 1405000078050000dc05000072060000
+  jump: 800100001e0000002800000032000000
   costJump: 020000000200000005000000e7030000
-  extraJump: 000000000100000002000000
+  extraJump: 94ffffff0200000003000000
   costExtraJump: 0a0000000f000000e7030000
   ice: 01000000020000000300000005000000
   costIce: 030000000400000005000000e7030000
@@ -770,7 +788,7 @@ AudioSource:
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -1538,7 +1556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1453423790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2191,6 +2209,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991185932}
   m_CullTransparentMesh: 1
+--- !u!114 &2004791425 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 101757095153149556, guid: 7f58c5ceb08b97949b1220571eb0a702, type: 3}
+  m_PrefabInstance: {fileID: 91701235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220f82cc34cb6d34caf7031a7514a02c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7991486573890407083
 PrefabInstance:
   m_ObjectHideFlags: 0

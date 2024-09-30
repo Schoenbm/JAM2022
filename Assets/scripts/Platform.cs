@@ -18,7 +18,7 @@ public class Platform : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapBoxAll(mat.GetPosition(), size, mat.rotation.z, mask);
         if(colliders.Length > 1){
             isCorrect = false;
-            Debug.Log("collided");
+            //Debug.Log("collided");
         }
     }
 

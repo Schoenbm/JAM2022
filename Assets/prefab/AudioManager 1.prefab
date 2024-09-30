@@ -90,3 +90,43 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - Name: Running
+    clip: {fileID: 8300000, guid: f297860f9c223bb4bb1d24caaa31da8d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Jump1
+    clip: {fileID: 8300000, guid: 9f621117bf3d9574f98547fe5526ac08, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Jump2
+    clip: {fileID: 8300000, guid: dd1d03647e107c949ae338ff3af2df8a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Jump3
+    clip: {fileID: 8300000, guid: 1a2f9a20815ade14eb7af58cc6b4ef88, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Damage1
+    clip: {fileID: 8300000, guid: 7ebf04b0f44875946aab937da1d7908f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Damage2
+    clip: {fileID: 8300000, guid: 166b8b1956875fa4d94c110f43904ff1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - Name: extraJump
+    clip: {fileID: 8300000, guid: 554ad821afa541943a30220b19b37b46, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - Name: Grounded
+    clip: {fileID: 8300000, guid: 554ad821afa541943a30220b19b37b46, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}

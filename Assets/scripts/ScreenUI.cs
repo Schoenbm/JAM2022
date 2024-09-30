@@ -11,11 +11,11 @@ public class ScreenUI : MonoBehaviour
     public TextMeshProUGUI Level;
     //public playerData player;
 
-    public GameObject SpeedButton;
-    public GameObject HigherButton;
-    public GameObject ExtraJumpButton;
-    public GameObject RepairButton;
-    public GameObject UpgradeIceButton;
+    public ButtonHighlited SpeedButton;
+    public ButtonHighlited HigherButton;
+    public ButtonHighlited ExtraJumpButton;
+    public ButtonHighlited RepairButton;
+    public ButtonHighlited UpgradeIceButton;
 
     public PlayerData data;
     PlayerManager playerManager;
@@ -23,39 +23,40 @@ public class ScreenUI : MonoBehaviour
     private void Awake()
     {
         playerManager = data.gameObject.GetComponent<PlayerManager>();
+
     }
     private void Update()
     {
         //PointerEventData lastPointer = PointerInputModule.GetLastPointerEventData() // GetLastPointerEventData(PointerInputModule.kMouseLeftId);
         //if (lastPointer != null)
-          //  return lastPointer.pointerCurrentRaycast.gameObject;
+        //  return lastPointer.pointerCurrentRaycast.gameObject;
         //return null;
 
-        if (SpeedButton.GetComponent<ButtonHighlited>().GetHighlighted())// || EventSystem.current.currentSelectedGameObject == SpeedButton)
+        if (SpeedButton.GetHighlighted())// || EventSystem.current.currentSelectedGameObject == SpeedButton)
         {
             Cost.SetText("Cost :\n" + data.getCost("speed"));
             Effect.SetText("Effect :\n Run faster");
             Level.SetText("Level : " + data.getLevel("speed"));
         }
-        else if (HigherButton.GetComponent<ButtonHighlited>().GetHighlighted())// || EventSystem.current.currentSelectedGameObject == HigherButton)
+        else if (HigherButton.GetHighlighted())// || EventSystem.current.currentSelectedGameObject == HigherButton)
         {
             Cost.SetText("Cost :\n" + data.getCost("jump"));
             Effect.SetText("Effect :\n Jump Higher");
             Level.SetText("Level : " + data.getLevel("jump"));
         }
-        else if (ExtraJumpButton.GetComponent<ButtonHighlited>().GetHighlighted())// || EventSystem.current.currentSelectedGameObject == ExtraJumpButton)
+        else if (ExtraJumpButton.GetHighlighted())// || EventSystem.current.currentSelectedGameObject == ExtraJumpButton)
         {
             Cost.SetText("Cost :\n" + data.getCost("extraJump"));
             Effect.SetText("Effect :\n New jump");
             Level.SetText("Level : " + data.getLevel("extraJump"));
         }
-        else if (RepairButton.GetComponent<ButtonHighlited>().GetHighlighted())// || EventSystem.current.currentSelectedGameObject == RepairButton)
+        else if (RepairButton.GetHighlighted())// || EventSystem.current.currentSelectedGameObject == RepairButton)
         {
             Cost.SetText("Cost :\n all");
             Effect.SetText("Effect :\n Repair ship");
             Level.SetText("");
         }
-        else if (UpgradeIceButton.GetComponent<ButtonHighlited>().GetHighlighted())// || EventSystem.current.currentSelectedGameObject == UpgradeIceButton)
+        else if (UpgradeIceButton.GetHighlighted())// || EventSystem.current.currentSelectedGameObject == UpgradeIceButton)
         {
             Cost.SetText("Cost :\n" + data.getCost("ice"));
             Effect.SetText("Effect :\n Gather more\n ice");
@@ -72,7 +73,8 @@ public class ScreenUI : MonoBehaviour
             data.levelUp("speed");
             FindObjectOfType<AudioManager>().Play("Pickup Scrap");
         }
-        Debug.Log("Can't buy");
+        else
+            Debug.Log("Can't buy : " + playerManager.getMetalScrap() + " where cost " + data.getCost("speed"));
     }
 
     public void buyIce()
@@ -103,5 +105,10 @@ public class ScreenUI : MonoBehaviour
             data.levelUp("extraJump");
             FindObjectOfType<AudioManager>().Play("Pickup Scrap");
         }
+    }
+
+    public void healRocket()
+    {
+        playerManager.repairShip();
     }
 }

@@ -8,7 +8,7 @@ public class RocketShadow : MonoBehaviour
     // Start is called before the first frame update
     public GameManager gm;
     float maxRocketHealth;
-    public Image shadow;
+    private Image shadow;
     void Start()
     {
         maxRocketHealth = gm.maxHealthRocket;

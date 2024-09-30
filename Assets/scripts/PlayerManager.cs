@@ -25,6 +25,7 @@ public class PlayerManager : MonoBehaviour
     public int startMetalScrap;
     public TextMeshProUGUI scrapCounter;
 
+    public AudioManager sm;
     void Awake()
     {
         playerData = this.gameObject.GetComponent<PlayerData>();
@@ -39,6 +40,13 @@ public class PlayerManager : MonoBehaviour
         metalScrapCount = startMetalScrap;
         iceCounter = HUD.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         scrapCounter = HUD.transform.GetChild(0).GetChild(1).GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
+        sm = FindObjectOfType<AudioManager>();
+    }
+
+    private void Update()
+    {
+        iceCounter.SetText(metalScrapCount.ToString());
+        scrapCounter.SetText(iceCount.ToString());
     }
 
     // Update is called once per frame
@@ -49,9 +57,6 @@ public class PlayerManager : MonoBehaviour
         else if(player){
             player.GetComponent<SpriteRenderer>().color = Color.white;
         }
-
-        iceCounter.SetText(metalScrapCount.ToString());
-        scrapCounter.SetText(iceCount.ToString());
     }
 
     public void playerDeath(){
@@ -69,17 +74,17 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void playerPickIce(){
-        FindObjectOfType<AudioManager>().Play("Pickup Ice");
+        sm.Play("Pickup Ice");
         iceCount += 1*iceValue;
     }
 
     public void playerPickScrap(){
-        FindObjectOfType<AudioManager>().Play("Pickup Scrap");
+        sm.Play("Pickup Scrap");
         metalScrapCount += 1;
     }
 
     public void playerSellIce() {
-        FindObjectOfType<AudioManager>().Play("Planet Cooling");
+        sm.Play("Planet Cooling");
         myPlanet.plusHealth(iceCount * 8);
         iceCount = 0;
     }
@@ -119,7 +124,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     void EndGame(){
-        FindObjectOfType<AudioManager>().Play("Planet Explode");
+        sm.Play("Planet Explode");
         gameManager.EndGame();
     }
 }

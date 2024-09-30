@@ -6,8 +6,8 @@ public class Meteor : MonoBehaviour
 {
 
     Rigidbody2D rb;
-    float speed = 4f;
-    float rotSpeed = 20f;
+    public float speed = 4f;
+    public float rotSpeed = 20f;
     public GameObject lavaPrefab;
     ParticleSystem Trail;
     ParticleSystem Explosion;

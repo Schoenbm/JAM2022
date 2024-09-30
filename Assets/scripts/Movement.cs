@@ -30,12 +30,15 @@ public class Movement : MonoBehaviour
     GameObject platform;
     float deltaPlatformDrop = 0;
 
+    private AudioManager sm;
+
     void Start(){
         groundMask = LayerMask.GetMask("Planet", "Platform");
         isAlive = true;
         faceRight = true;
         rb = this.GetComponent<Rigidbody2D>();
         extraJump = maxExtraJump;
+        sm = FindObjectOfType<AudioManager>();
     }
 
     void Update(){
@@ -65,13 +68,13 @@ public class Movement : MonoBehaviour
         }
         if (Input.GetKeyDown("e") && inRocket && !inRocketMenu)
         {
-            FindObjectOfType<AudioManager>().Play("Open Shop");
+            sm.Play("Open Shop");
             rocket.ActivateMenu(true);
             inRocketMenu = true;
         }
         else if ((Input.GetButtonDown("Cancel") ||Input.GetKeyDown("e")) && inRocket && inRocketMenu)
         {
-            FindObjectOfType<AudioManager>().Play("Close Shop");
+            sm.Play("Close Shop");
             rocket.ActivateMenu(false);
             inRocketMenu = false;
         }
@@ -82,6 +85,8 @@ public class Movement : MonoBehaviour
         if(collision.gameObject.tag == "Killable"){
             if(!Manager.invulnerable){
                 isAlive = false;
+                int r = Random.Range(1, 3);
+                sm.Play("Damage" + r);
                 Manager.playerDeath();
             }
             
@@ -136,12 +141,72 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate(){
 
+        //Si jamais c'est stuck
         if(transform.position.y < 31.4f)
         {
             this.rb.AddForce(Vector2.up);
         }
+
+ 
+        processRunning();
+        processGround();
+        processJump();
+        processExtraJump();
+    }
+
+    private void processGround()
+    {
+        RaycastHit2D rayLeft = Physics2D.Raycast(this.transform.position - new Vector3(-0.35f, 1, 0), Vector2.down, 0.5f, groundMask);
+        RaycastHit2D ray = Physics2D.Raycast(this.transform.position - new Vector3(0, 0.7f, 0), Vector2.down, 0.7f, groundMask);
+        RaycastHit2D rayRight = Physics2D.Raycast(this.transform.position - new Vector3(0.35f, 1, 0), Vector2.down, 0.5f, groundMask);
+        if (!isGrounded && (rayLeft.collider || rayRight.collider || ray.collider))
+        {
+            sm.Play("Grounded");
+            extraJump = maxExtraJump;
+            isGrounded = true;
+            coyoteTime = maxCoyoteTime;
+        }
+        else
+            isGrounded = false;
+
+        if (!(rayLeft.collider || rayRight.collider || ray.collider))
+        {
+            coyoteTime -= Time.deltaTime;
+        }
+
+        if (isGrounded && dropPlatform)
+        {
+            if (rayLeft.collider)
+                platform = rayLeft.collider.gameObject;
+            else if (rayRight.collider)
+                platform = rayRight.collider.gameObject;
+            else if (ray.collider)
+                platform = ray.collider.gameObject;
+            else
+                return;
+
+            if ((platform.tag == "Platform" || platform.tag == "LongPlatform") && dropPlatform)
+            {
+                platform.GetComponent<PlatformEffector2D>().rotationalOffset = 180;
+                StartCoroutine(turnPlatform(platform));
+            }
+        }
+    }
+
+    private void processExtraJump()
+    {
+
+    }
+
+    private void processRunning()
+    {
         if(isAlive){
             Vector3 rotation = new Vector3(0,0,Input.GetAxis("Horizontal") * speed * Time.deltaTime);
+            if (isGrounded && Input.GetAxis("Horizontal") != 0 && !sm.isPlaying("Running"))
+                sm.Play("Running");
+            else if (sm.isPlaying("Running") && (!isGrounded ||  Input.GetAxis("Horizontal") ==0))
+                sm.Stop("Running");
+
             if(faceRight && rotation.z < 0){
                 faceRight = false;
                 this.transform.gameObject.GetComponent<SpriteRenderer>().flipX = true;
@@ -152,72 +217,35 @@ public class Movement : MonoBehaviour
             }
             earth.transform.eulerAngles += rotation;
         }
-        
-        RaycastHit2D rayLeft = Physics2D.Raycast(this.transform.position - new Vector3(-0.35f,1,0), Vector2.down,0.5f, groundMask);
-        RaycastHit2D ray = Physics2D.Raycast(this.transform.position - new Vector3(0, 0.7f, 0), Vector2.down, 0.7f, groundMask);
-        RaycastHit2D rayRight = Physics2D.Raycast(this.transform.position - new Vector3(0.35f, 1, 0), Vector2.down, 0.5f, groundMask);
-        if (rayLeft.collider || rayRight.collider || ray.collider)
-        {
-            extraJump = maxExtraJump;
-            isGrounded = true;
-            coyoteTime = maxCoyoteTime;
-        }
-        else
-        {
-            coyoteTime -= Time.deltaTime;
-            isGrounded = (coyoteTime > 0);
-        }
-        Debug.DrawRay(this.transform.position - new Vector3(-0.35f, 1, 0), Vector2.down, Color.red, 0.5f);
-        Debug.DrawRay(this.transform.position - new Vector3(0.35f, 1, 0), Vector2.down, Color.red, 0.5f);
+    }
 
-
-        if (isGrounded && dropPlatform)
+    private void processJump()
+    {
+        if (jump && isGrounded)
         {
-            if (rayLeft.collider)
-                platform = rayLeft.collider.gameObject;
-            else if (rayLeft.collider)
-                platform = rayLeft.collider.gameObject;
-            else if (rayLeft.collider)
-                platform = rayLeft.collider.gameObject;
-
-            if ((platform.tag == "Platform" || platform.tag == "LongPlatform") && dropPlatform)
-            {
-                platform.GetComponent<PlatformEffector2D>().rotationalOffset = 180;
-                StartCoroutine(turnPlatform(platform));
-            }
-        }
-
-        if (jump && isGrounded && rb.velocity.y < 0.5f)
-        {
-            rb.AddForce(-20 * rb.velocity.y * Vector2.up);
+            rb.velocity.Set(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * jumpHeight);
             jump = false;
-            jumpPressTime = 0f;
+            jumpSound();
         }
-        else if (jump && extraJump > 0 && rb.velocity.y < 12f)
+        else if (!isGrounded && jump && extraJump > 0 )
         {
-            rb.AddForce(-37 * rb.velocity.y * Vector2.up);
-            rb.AddForce(Vector2.up * jumpHeight);
+            rb.AddForce(Vector2.up * jumpHeight * 0.8f);
             jump = false;
             extraJump -= 1;
-        }
-        if(jumpPressTime < 10)
-        {
-            jumpPressTime += Time.deltaTime;
-        }
-        
-        if (jumpPressTime < 0.15f && stopJumping)
-        {
-            Debug.Log("short");
-            jumpPressTime = 10f;
-            rb.AddForce(Vector2.down * jumpHeight * 0.38f);
-            stopJumping = false;
-        }
-        else if(stopJumping)
-        {
-            stopJumping = false;
-            jumpPressTime = 10f;
+            sm.Play("extraJump");
         }
 
+        if (stopJumping)
+        {
+            stopJumping = false;
+            rb.AddForce(-Vector2.up * 4 * Physics2D.gravity.y);
+        }
+    }
+
+    private void jumpSound()
+    {
+        int r = Random.Range(1, 4);
+        sm.Play("Jump" + r);
     }
 }   
