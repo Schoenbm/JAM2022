@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
         playerData = this.gameObject.GetComponent<PlayerData>();
         invulnerable = false;
         iceValue = 100;
-        player = Instantiate(playerPrefab, new Vector3(0,31,0), Quaternion.identity) as GameObject;
+        player = Instantiate(playerPrefab, new Vector3(0,32,0), Quaternion.identity) as GameObject;
         player.GetComponent<Movement>().earth = planet;
         player.GetComponent<Movement>().Manager = this;
         cineCamera.m_Follow =player.GetComponent<Movement>().cameraTracker.transform;

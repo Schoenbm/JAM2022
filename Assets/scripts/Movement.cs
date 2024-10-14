@@ -10,7 +10,7 @@ public class Movement : MonoBehaviour
     public float speed = 10f;
     Rigidbody2D rb;
     LayerMask groundMask;
-    bool isGrounded = true;
+    bool isGrounded = false;
     bool jump = false;
     bool faceRight;
     public int maxExtraJump = 0;
@@ -30,15 +30,29 @@ public class Movement : MonoBehaviour
     GameObject platform;
     float deltaPlatformDrop = 0;
 
+
+    private float largeurPersonnage;
+    private float hauteurPersonnage;
+
+    private float jumpGravity;
+    private float fallGravity;
+    private float fastFallGravity;
+
     private AudioManager sm;
 
-    void Start(){
+    void Start() {
         groundMask = LayerMask.GetMask("Planet", "Platform");
         isAlive = true;
         faceRight = true;
         rb = this.GetComponent<Rigidbody2D>();
         extraJump = maxExtraJump;
         sm = FindObjectOfType<AudioManager>();
+        jumpGravity = rb.gravityScale;
+        fastFallGravity = rb.gravityScale * 2f;
+        fallGravity = rb.gravityScale * 1.5f;
+
+        largeurPersonnage = this.GetComponent<CapsuleCollider2D>().size.x * this.transform.localScale.x;
+        hauteurPersonnage = this.GetComponent<CapsuleCollider2D>().size.y * this.transform.localScale.y ;
     }
 
     void Update(){
@@ -57,6 +71,7 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("Double jump");
             jump = true;
+            stopJumping = false;
         }
         if (Input.GetButtonUp("Jump") && jumpPressTime < 10)
         {
@@ -156,31 +171,36 @@ public class Movement : MonoBehaviour
 
     private void processGround()
     {
-        RaycastHit2D rayLeft = Physics2D.Raycast(this.transform.position - new Vector3(-0.35f, 1, 0), Vector2.down, 0.5f, groundMask);
-        RaycastHit2D ray = Physics2D.Raycast(this.transform.position - new Vector3(0, 0.7f, 0), Vector2.down, 0.7f, groundMask);
-        RaycastHit2D rayRight = Physics2D.Raycast(this.transform.position - new Vector3(0.35f, 1, 0), Vector2.down, 0.5f, groundMask);
-        if (!isGrounded && (rayLeft.collider || rayRight.collider || ray.collider))
+        RaycastHit2D ray = Physics2D.Raycast(this.transform.position - new Vector3(largeurPersonnage * 0.5f, hauteurPersonnage * 0.52f, 0), Vector2.right, largeurPersonnage, groundMask);
+
+        Debug.DrawRay(this.transform.position - new Vector3(largeurPersonnage * 0.5f ,hauteurPersonnage * 0.52f, 0), Vector2.right * largeurPersonnage, Color.green);
+        Debug.Log(rb.velocity.y);
+        if (!isGrounded &&  ray.collider && rb.velocity.y <= 0.001 )
         {
+
+
+            rb.gravityScale = fallGravity;
             sm.Play("Grounded");
             extraJump = maxExtraJump;
             isGrounded = true;
+            Debug.Log("Grounded");
             coyoteTime = maxCoyoteTime;
         }
-        else
+        else if(!(ray.collider) && isGrounded)
+        {
+            Debug.Log("NotGrounded");
             isGrounded = false;
+        }
 
-        if (!(rayLeft.collider || rayRight.collider || ray.collider))
+
+        if (!(ray.collider))
         {
             coyoteTime -= Time.deltaTime;
         }
 
         if (isGrounded && dropPlatform)
         {
-            if (rayLeft.collider)
-                platform = rayLeft.collider.gameObject;
-            else if (rayRight.collider)
-                platform = rayRight.collider.gameObject;
-            else if (ray.collider)
+            if (ray.collider)
                 platform = ray.collider.gameObject;
             else
                 return;
@@ -192,6 +212,7 @@ public class Movement : MonoBehaviour
             }
         }
     }
+
 
     private void processExtraJump()
     {
@@ -221,16 +242,19 @@ public class Movement : MonoBehaviour
 
     private void processJump()
     {
-        if (jump && isGrounded)
+        if (jump && isGrounded && coyoteTime > 0)
         {
             rb.velocity.Set(rb.velocity.x, 0);
-            rb.AddForce(Vector2.up * jumpHeight);
+            rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+            rb.gravityScale = jumpGravity;
             jump = false;
             jumpSound();
         }
         else if (!isGrounded && jump && extraJump > 0 )
         {
-            rb.AddForce(Vector2.up * jumpHeight * 0.8f);
+            rb.AddForce(-0.82f * rb.velocity, ForceMode2D.Impulse) ;
+            rb.AddForce(Vector2.up * jumpHeight * 0.75f, ForceMode2D.Impulse);
+            rb.gravityScale = jumpGravity;
             jump = false;
             extraJump -= 1;
             sm.Play("extraJump");
@@ -238,8 +262,8 @@ public class Movement : MonoBehaviour
 
         if (stopJumping)
         {
+            rb.gravityScale = fastFallGravity;
             stopJumping = false;
-            rb.AddForce(-Vector2.up * 4 * Physics2D.gravity.y);
         }
     }
 

@@ -134,6 +134,34 @@ PrefabInstance:
       propertyPath: sounds.Array.data[16].clip
       value: 
       objectReference: {fileID: 8300000, guid: bb3749ce9eafbba4f8a022f3cd63c873, type: 3}
+    - target: {fileID: 3030594061755080994, guid: 7a152682ae31ea0488217418335dd5c6, type: 3}
+      propertyPath: sounds.Array.data[16].pitch
+      value: 1.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030594061755080994, guid: 7a152682ae31ea0488217418335dd5c6, type: 3}
+      propertyPath: sounds.Array.data[10].volume
+      value: 0.599
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030594061755080994, guid: 7a152682ae31ea0488217418335dd5c6, type: 3}
+      propertyPath: sounds.Array.data[11].volume
+      value: 0.225
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030594061755080994, guid: 7a152682ae31ea0488217418335dd5c6, type: 3}
+      propertyPath: sounds.Array.data[12].volume
+      value: 0.483
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030594061755080994, guid: 7a152682ae31ea0488217418335dd5c6, type: 3}
+      propertyPath: sounds.Array.data[13].volume
+      value: 0.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030594061755080994, guid: 7a152682ae31ea0488217418335dd5c6, type: 3}
+      propertyPath: sounds.Array.data[14].volume
+      value: 0.577
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030594061755080994, guid: 7a152682ae31ea0488217418335dd5c6, type: 3}
+      propertyPath: sounds.Array.data[16].volume
+      value: 0.874
+      objectReference: {fileID: 0}
     - target: {fileID: 3030594061755080995, guid: 7a152682ae31ea0488217418335dd5c6, type: 3}
       propertyPath: m_Name
       value: AudioManager 1
@@ -742,7 +770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0f00000010000000110000001300000016000000
   costSpeed: 01000000020000000300000005000000e7030000
-  jump: 800100001e0000002800000032000000
+  jump: 11000000130000001500000017000000
   costJump: 020000000200000005000000e7030000
   extraJump: 94ffffff0200000003000000
   costExtraJump: 0a0000000f000000e7030000
