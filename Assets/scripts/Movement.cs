@@ -30,7 +30,6 @@ public class Movement : MonoBehaviour
     GameObject platform;
     float deltaPlatformDrop = 0;
 
-
     private float largeurPersonnage;
     private float hauteurPersonnage;
 
@@ -38,7 +37,9 @@ public class Movement : MonoBehaviour
     private float fallGravity;
     private float fastFallGravity;
 
+    private bool extraJumpAnim;
     private AudioManager sm;
+    public Animator animator;
 
     void Start() {
         groundMask = LayerMask.GetMask("Planet", "Platform");
@@ -51,8 +52,9 @@ public class Movement : MonoBehaviour
         fastFallGravity = rb.gravityScale * 2f;
         fallGravity = rb.gravityScale * 1.5f;
 
-        largeurPersonnage = this.GetComponent<CapsuleCollider2D>().size.x * this.transform.localScale.x;
-        hauteurPersonnage = this.GetComponent<CapsuleCollider2D>().size.y * this.transform.localScale.y ;
+        
+        animator = this.GetComponent<Animator>();
+
     }
 
     void Update(){
@@ -94,6 +96,7 @@ public class Movement : MonoBehaviour
             inRocketMenu = false;
         }
 
+        processAnimation();
     }
 
     void OnTriggerEnter2D(Collider2D collision){
@@ -130,6 +133,7 @@ public class Movement : MonoBehaviour
             rocket.setActiveDialogue(true);
             inRocket = true;
         }
+        processAnimation();
     }
         
     void OnTriggerExit2D(Collider2D collision)
@@ -169,11 +173,25 @@ public class Movement : MonoBehaviour
         processExtraJump();
     }
 
+    private void processAnimation()
+    {
+        //animator.SetFloat("Speed", Input.GetAxis("Horizontal") * speed);
+
+        animator.SetBool("Running", Input.GetAxis("Horizontal") !=0);
+        animator.SetBool("Grounded", isGrounded);
+        animator.SetBool("Coyote", coyoteTime > 0);
+        animator.SetBool("Jumping", jumpGravity == rb.gravityScale);
+        animator.SetBool("ExtraJumping", extraJumpAnim);
+    }
+
     private void processGround()
     {
-        RaycastHit2D ray = Physics2D.Raycast(this.transform.position - new Vector3(largeurPersonnage * 0.5f, hauteurPersonnage * 0.52f, 0), Vector2.right, largeurPersonnage, groundMask);
+        largeurPersonnage = this.GetComponent<CapsuleCollider2D>().size.x * this.transform.localScale.x;
+        hauteurPersonnage = this.GetComponent<CapsuleCollider2D>().size.y * this.transform.localScale.y; //TODO OPTIMISE
+        float offsetY = this.GetComponent<CapsuleCollider2D>().offset.y * this.transform.localScale.y;
+        RaycastHit2D ray = Physics2D.Raycast(this.transform.position - new Vector3(largeurPersonnage * 0.5f, hauteurPersonnage * 0.52f - offsetY, 0), Vector2.right, largeurPersonnage, groundMask);
 
-        Debug.DrawRay(this.transform.position - new Vector3(largeurPersonnage * 0.5f ,hauteurPersonnage * 0.52f, 0), Vector2.right * largeurPersonnage, Color.green);
+        Debug.DrawRay(this.transform.position - new Vector3(largeurPersonnage * 0.5f ,hauteurPersonnage  * 0.52f - offsetY, 0), Vector2.right * largeurPersonnage, Color.green);
         Debug.Log(rb.velocity.y);
         if (!isGrounded &&  ray.collider && rb.velocity.y <= 0.001 )
         {
@@ -225,7 +243,7 @@ public class Movement : MonoBehaviour
             Vector3 rotation = new Vector3(0,0,Input.GetAxis("Horizontal") * speed * Time.deltaTime);
             if (isGrounded && Input.GetAxis("Horizontal") != 0 && !sm.isPlaying("Running"))
                 sm.Play("Running");
-            else if (sm.isPlaying("Running") && (!isGrounded ||  Input.GetAxis("Horizontal") ==0))
+            else if (sm.isPlaying("Running") && (!isGrounded ||  Input.GetAxis("Horizontal") ==0) || inRocketMenu)
                 sm.Stop("Running");
 
             if(faceRight && rotation.z < 0){
@@ -252,8 +270,9 @@ public class Movement : MonoBehaviour
         }
         else if (!isGrounded && jump && extraJump > 0 )
         {
-            rb.AddForce(-0.82f * rb.velocity, ForceMode2D.Impulse) ;
-            rb.AddForce(Vector2.up * jumpHeight * 0.75f, ForceMode2D.Impulse);
+            extraJumpAnim = true;
+            rb.AddForce(-0.92f * rb.velocity, ForceMode2D.Impulse) ;
+            rb.AddForce(Vector2.up * jumpHeight * 0.8f, ForceMode2D.Impulse);
             rb.gravityScale = jumpGravity;
             jump = false;
             extraJump -= 1;
@@ -262,6 +281,7 @@ public class Movement : MonoBehaviour
 
         if (stopJumping)
         {
+            extraJumpAnim = false;
             rb.gravityScale = fastFallGravity;
             stopJumping = false;
         }
