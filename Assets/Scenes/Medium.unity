@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -768,11 +768,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5e315c62a7ab1428164b04590832d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0f00000010000000110000001300000016000000
+  speed: 1100000012000000130000001400000016000000
   costSpeed: 01000000020000000300000005000000e7030000
-  jump: 11000000130000001500000017000000
+  jump: 12000000140000001600000018000000
   costJump: 020000000200000005000000e7030000
-  extraJump: 94ffffff0200000003000000
+  extraJump: 94ffffff0100000002000000
   costExtraJump: 0a0000000f000000e7030000
   ice: 01000000020000000300000005000000
   costIce: 030000000400000005000000e7030000
@@ -911,7 +911,7 @@ PrefabInstance:
     - target: {fileID: 408351418749529446, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -111344106488075306, guid: 8c3e0acdea286f44e8788244da700f61, type: 2}
     - target: {fileID: 3229884541577928414, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -983,7 +983,7 @@ PrefabInstance:
     - target: {fileID: 7794052218330370057, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: -111344106488075306, guid: 8c3e0acdea286f44e8788244da700f61, type: 2}
     - target: {fileID: 8656096774849321942, guid: 9c6ab95d54ee7d54faf7fed81b2458fe, type: 3}
       propertyPath: m_TagString
       value: LongPlatform

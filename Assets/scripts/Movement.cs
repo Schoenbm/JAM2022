@@ -38,6 +38,7 @@ public class Movement : MonoBehaviour
     private float fastFallGravity;
 
     private bool extraJumpAnim;
+    private bool jumpAnim;
     private AudioManager sm;
     public Animator animator;
 
@@ -180,7 +181,7 @@ public class Movement : MonoBehaviour
         animator.SetBool("Running", Input.GetAxis("Horizontal") !=0);
         animator.SetBool("Grounded", isGrounded);
         animator.SetBool("Coyote", coyoteTime > 0);
-        animator.SetBool("Jumping", jumpGravity == rb.gravityScale);
+        animator.SetBool("Jumping", jumpAnim);
         animator.SetBool("ExtraJumping", extraJumpAnim);
     }
 
@@ -197,10 +198,11 @@ public class Movement : MonoBehaviour
         {
 
 
-            rb.gravityScale = fallGravity;
+            rb.gravityScale = jumpGravity;
             sm.Play("Grounded");
             extraJump = maxExtraJump;
             isGrounded = true;
+            jumpAnim = false;
             Debug.Log("Grounded");
             coyoteTime = maxCoyoteTime;
         }
@@ -208,6 +210,7 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("NotGrounded");
             isGrounded = false;
+            rb.gravityScale = fallGravity;
         }
 
 
@@ -260,19 +263,21 @@ public class Movement : MonoBehaviour
 
     private void processJump()
     {
-        if (jump && isGrounded && coyoteTime > 0)
+        if (jump && (isGrounded || coyoteTime > 0))
         {
             rb.velocity.Set(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
             rb.gravityScale = jumpGravity;
+            jumpAnim = true;
             jump = false;
             jumpSound();
         }
-        else if (!isGrounded && jump && extraJump > 0 )
+        else if (!(isGrounded || coyoteTime > 0) && jump && extraJump > 0 )
         {
+            jumpAnim = false;
             extraJumpAnim = true;
-            rb.AddForce(-0.92f * rb.velocity, ForceMode2D.Impulse) ;
-            rb.AddForce(Vector2.up * jumpHeight * 0.8f, ForceMode2D.Impulse);
+            rb.AddForce(-1 * rb.velocity, ForceMode2D.Impulse) ;
+            rb.AddForce(Vector2.up * 0.82f *  jumpHeight, ForceMode2D.Impulse);
             rb.gravityScale = jumpGravity;
             jump = false;
             extraJump -= 1;
@@ -281,6 +286,7 @@ public class Movement : MonoBehaviour
 
         if (stopJumping)
         {
+            jumpAnim = false;
             extraJumpAnim = false;
             rb.gravityScale = fastFallGravity;
             stopJumping = false;
